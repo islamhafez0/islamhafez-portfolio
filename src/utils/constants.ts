@@ -5,18 +5,11 @@ export const experiences: {
   description: string;
 }[] = [
   {
-    title: "Frontend Developer",
+    title: "Frontend Developer Internship",
     company: "CodeAlpha Company",
     period: "APRIL 2024 – AUGUST 2024",
     description:
       "Developed user-friendly web applications using React.js, focusing on reusable components and performance optimization.",
-  },
-  {
-    title: "SEO Optimizer",
-    company: "New Start",
-    period: "MARCH 2023 – OCTOBER 2023",
-    description:
-      "Conducted comprehensive keyword research and on-page SEO optimization to improve website visibility and search engine rankings.",
   },
 ];
 
