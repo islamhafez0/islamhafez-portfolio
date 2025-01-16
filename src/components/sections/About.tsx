@@ -45,7 +45,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl font-bold text-center mb-8">About Me</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-16 text-center">
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-16 text-center">
             Frontend Developer skilled in developing dynamic and responsive web
             applications. Results-oriented approach delivering high-quality user
             interfaces to improve UX and provide user engagement.
@@ -60,13 +60,9 @@ const About = () => {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="p-6 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="text-indigo-600 dark:text-indigo-400 mb-4">
-                  {skill.icon}
-                </div>
+                <div className="text-indigo-600 mb-4">{skill.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {skill.description}
-                </p>
+                <p className="text-gray-300">{skill.description}</p>
               </motion.div>
             ))}
           </div>

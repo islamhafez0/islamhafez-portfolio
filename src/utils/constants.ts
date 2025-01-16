@@ -5,6 +5,13 @@ export const experiences: {
   description: string;
 }[] = [
   {
+    title: "Frontend Developer",
+    company: "PearlPixles Company",
+    period: "DECEMBER 2024 – Present",
+    description:
+      "Developed and optimized user-friendly web applications using React.js, focusing on reusable components and enhancing performance.",
+  },
+  {
     title: "Frontend Developer Internship",
     company: "CodeAlpha Company",
     period: "APRIL 2024 – AUGUST 2024",

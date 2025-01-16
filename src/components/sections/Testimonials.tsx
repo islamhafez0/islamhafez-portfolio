@@ -27,9 +27,9 @@ const Testimonials = () => {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="bg-white/10 backdrop-blur-lg p-6 rounded-lg shadow-lg relative"
               >
-                <Quote className="absolute top-4 right-4 w-8 h-8 text-indigo-200 dark:text-indigo-800" />
+                <Quote className="absolute top-4 right-4 w-8 h-8 text-indigo-800" />
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6 italic">
+                <p className="text-gray-300 mb-6 italic">
                   "{testimonial.text}"
                 </p>
 
@@ -41,7 +41,7 @@ const Testimonials = () => {
                   />
                   <div>
                     <h3 className="font-semibold">{testimonial.name}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-400">
                       {testimonial.role} at {testimonial.company}
                     </p>
                   </div>

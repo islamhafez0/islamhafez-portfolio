@@ -97,13 +97,13 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                    <Mail className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                    <Mail className="w-6 h-6 text-indigo-400" />
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
                     <a
                       href="mailto:eslamhafez044@gmail.com"
-                      className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                      className="text-gray-300 hover:text-indigo-400"
                     >
                       eslamhafez044@gmail.com
                     </a>
@@ -111,14 +111,14 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                    <Phone className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                  <div className="p-3 bg-indigo-900 rounded-full">
+                    <Phone className="w-6 h-6 text-indigo-400" />
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
                     <a
                       href="tel:+201097423297"
-                      className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                      className="text-gray-300 hover:text-indigo-400"
                     >
                       +20 1097423297
                     </a>
@@ -126,12 +126,12 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                    <MapPin className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                  <div className="p-3 bg-indigo-900 rounded-full">
+                    <MapPin className="w-6 h-6 text-indigo-400" />
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-300">
                       Egypt, ELbehaira, Itayelbaroud
                     </p>
                   </div>

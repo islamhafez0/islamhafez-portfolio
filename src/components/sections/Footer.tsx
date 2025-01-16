@@ -6,7 +6,7 @@ const Footer = () => {
           <p className="text-gray-400">
             © {new Date().getFullYear()} Eslam Hafez. All rights reserved.
           </p>
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-gray-300">
             Built with React, TypeScript, and Tailwind CSS
           </p>
         </div>
