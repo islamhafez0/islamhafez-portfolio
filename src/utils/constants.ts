@@ -6,14 +6,14 @@ export const experiences: {
 }[] = [
   {
     title: "Frontend Developer",
-    company: "PearlPixles Company",
+    company: "Pearl Pixels Company",
     period: "DECEMBER 2024 – Present",
     description:
       "Developed and optimized user-friendly web applications using React.js, focusing on reusable components and enhancing performance.",
   },
   {
     title: "Frontend Developer Internship",
-    company: "CodeAlpha Company",
+    company: "Code Alpha Company",
     period: "APRIL 2024 – AUGUST 2024",
     description:
       "Developed user-friendly web applications using React.js, focusing on reusable components and performance optimization.",
