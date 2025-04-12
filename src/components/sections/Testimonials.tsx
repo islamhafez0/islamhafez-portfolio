@@ -90,7 +90,9 @@ const Testimonials = () => {
           </div>
           <div className="custom_bullets flex items-center justify-center mt-8 gap-1"></div>
           <a
-            href="#"
+            href="https://islamhafez-testimonials.vercel.app/"
+            rel="noopener noreferrer"
+            target="_blank"
             className="flex md:hidden mt-12 max-w-[215px] mx-auto items-center gap-2 px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
           >
             <PlusCircle className="w-5 h-5" />
