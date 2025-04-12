@@ -18,3 +18,14 @@ export const sendFormData = async ({
     throw error;
   }
 };
+
+export const getTestimonials = async () => {
+  const VITE_TESTIMONIALS_ENDPOINT = import.meta.env.VITE_TESTIMONIALS_ENDPOINT;
+  try {
+    const { data } = await axios.get(VITE_TESTIMONIALS_ENDPOINT);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

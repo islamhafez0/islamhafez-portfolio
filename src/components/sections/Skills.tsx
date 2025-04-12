@@ -17,6 +17,11 @@ export const skills = [
   "Node.js",
   "MongoDB",
   "Express.js",
+  "odoo",
+  "Python",
+  "PostgreSQL",
+  "Qweb",
+  "OWL",
   "Git",
   "SEO",
   "Performance Optimization",
@@ -46,6 +51,7 @@ const Skills = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="text-center mb-16"
+        viewport={{ once: true }}
       >
         <h2 className="text-4xl font-bold text-white mb-4">Skills</h2>
         <p className="text-gray-400">Craftsmanship</p>
@@ -55,7 +61,7 @@ const Skills = () => {
         viewport={{ once: true }}
         initial="hidden"
         whileInView="show"
-        className="flex flex-wrap gap-3 justify-center max-w-6xl mx-auto"
+        className="flex flex-wrap gap-3 justify-center max-w-6xl mx-auto px-0 lg:px-8"
       >
         {skills.map((skill, index) => (
           <motion.span

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const Hero = () => {
   const [heroRef, heroInView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.1,
   });
   const container = {
@@ -32,7 +32,7 @@ const Hero = () => {
         className="text-5xl md:text-7xl font-bold bg-gradient-text"
         variants={child}
       >
-        Eslam Hafez
+        Islam Hafez
       </motion.h1>
       <motion.p
         className="text-2xl md:text-3xl mt-6 text-gray-300 max-w-2xl"
@@ -55,7 +55,7 @@ const Hero = () => {
           href="https://github.com/islamhafez0"
           rel="noopener noreferrer"
           aria-label="Github profile"
-          title="Eslam Hafez's github"
+          title="Islam Hafez's github"
           target="_blank"
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
           whileHover={{ scale: 1.2 }}
@@ -67,7 +67,7 @@ const Hero = () => {
           href="https://linkedin.com/in/islam-hafez-103902246/"
           target="_blank"
           rel="noopener noreferrer"
-          title="Eslam Hafez's linkedin"
+          title="Islam Hafez's linkedin"
           aria-label="Linkendin profile"
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
           whileHover={{ scale: 1.1 }}
@@ -76,9 +76,9 @@ const Hero = () => {
           <Linkedin className="w-6 h-6" />
         </motion.a>
         <motion.a
-          href="mailto:eslamhafez044@gmail.com"
-          title="Send email to Eslam Hafez"
-          aria-label="Send email to Eslam Hafez"
+          href="mailto:Islamhafez044@gmail.com"
+          title="Send email to Islam Hafez"
+          aria-label="Send email to Islam Hafez"
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -87,9 +87,9 @@ const Hero = () => {
         </motion.a>
         <motion.a
           download
-          href="/Eslam_Hafez_Frontend_Developer_Resume.pdf"
-          title="Download Eslam Hafez's resume"
-          aria-label="Eslam Hafez's resume"
+          href="/Islam_Hafez_Frontend_Developer_Resume.pdf"
+          title="Download Islam Hafez's resume"
+          aria-label="Islam Hafez's resume"
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}

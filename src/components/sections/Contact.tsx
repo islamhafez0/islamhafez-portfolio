@@ -8,6 +8,7 @@ import { Toast } from "../ui/Toast";
 const Contact = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
+    triggerOnce: true,
   });
   const INITIAL_DATA = {
     name: "",
@@ -102,10 +103,10 @@ const Contact = () => {
                   <div>
                     <p className="font-medium">Email</p>
                     <a
-                      href="mailto:eslamhafez044@gmail.com"
+                      href="mailto:Islamhafez044@gmail.com"
                       className="text-gray-300 hover:text-indigo-400"
                     >
-                      eslamhafez044@gmail.com
+                      Islamhafez044@gmail.com
                     </a>
                   </div>
                 </div>
@@ -131,9 +132,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-gray-300">
-                      Egypt, ELbehaira, Itayelbaroud
-                    </p>
+                    <p className="text-gray-300">Egypt, Cairo, Elmaadi</p>
                   </div>
                 </div>
               </div>

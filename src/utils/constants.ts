@@ -7,7 +7,7 @@ export const experiences: {
   {
     title: "Frontend Developer",
     company: "Pearl Pixels Company",
-    period: "DECEMBER 2024 – Present",
+    period: "OCTOBER 2024 - Present",
     description:
       "Developed and optimized user-friendly web applications using React.js, focusing on reusable components and enhancing performance.",
   },
@@ -86,38 +86,5 @@ export const projects: {
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800",
     github: "https://github.com/islamhafez0/nextjs-commerce",
     demo: "https://ecommerce-website-five-flax.vercel.app/",
-  },
-];
-
-export const testimonials: {
-  name: string;
-  role: string;
-  company: string;
-  image: string;
-  text: string;
-}[] = [
-  {
-    name: "Sarah Johnson",
-    role: "Project Manager",
-    company: "TechCorp",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60",
-    text: "Eslam is an exceptional frontend developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding.",
-  },
-  {
-    name: "Michael Chen",
-    role: "Senior Developer",
-    company: "WebSolutions",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60",
-    text: "Working with Eslam was a great experience. His expertise in React and modern web technologies helped us deliver our project ahead of schedule.",
-  },
-  {
-    name: "Emma Davis",
-    role: "UI/UX Designer",
-    company: "DesignHub",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60",
-    text: "Eslam has an excellent eye for design implementation. He perfectly translated our designs into responsive, pixel-perfect websites.",
   },
 ];

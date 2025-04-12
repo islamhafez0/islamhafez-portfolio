@@ -5,6 +5,7 @@ import { Code2, Laptop, Brain, Users } from "lucide-react";
 const About = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
+    triggerOnce: true,
   });
 
   const skills = [

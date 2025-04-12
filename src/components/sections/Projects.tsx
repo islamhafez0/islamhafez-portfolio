@@ -6,7 +6,7 @@ import { projects } from "../../utils/constants";
 const Projects = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: false,
+    triggerOnce: true,
   });
 
   return (

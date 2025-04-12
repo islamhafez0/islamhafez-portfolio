@@ -70,7 +70,7 @@ const Navbar = () => {
           className="md:hidden bg-black/95 backdrop-blur-sm"
         >
           <div className="px-4 pt-2 pb-4 space-y-4">
-            {["About", "Projects", "Skills", "Contact"].map((item) => (
+            {["About", "Skills", "Projects", "Contact"].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
