@@ -155,6 +155,7 @@ const TestimonialCard = ({
             src={testimonial.image}
             alt={testimonial.name}
             className="w-12 h-12 rounded-full object-cover"
+            loading="lazy"
           />
         ) : (
           <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center border-2 border-gray-200">
