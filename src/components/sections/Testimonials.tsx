@@ -76,7 +76,7 @@ const Testimonials = () => {
               }}
               className="pb-12"
             >
-              {testimonials.map((testimonial, index) => (
+              {testimonials?.map((testimonial, index) => (
                 <SwiperSlide key={index}>
                   <TestimonialCard
                     testimonial={testimonial}
