@@ -4,6 +4,19 @@
 
 @layer base {
   html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-display: swap;
+  }
+}
+
+@layer base {
+  html {
     @apply scroll-smooth;
   }
   body {
