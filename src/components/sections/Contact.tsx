@@ -80,7 +80,7 @@ const Contact = () => {
 
   return (
     <section ref={ref} className="py-20 dark:bg-gray-900" id="contact">
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
