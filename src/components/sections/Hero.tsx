@@ -26,7 +26,7 @@ const Hero = () => {
       initial="hidden"
       animate={heroInView ? "visible" : "hidden"}
       variants={container}
-      className="px-4 pt-32 pb-20 md:pb-32 max-w-6xl mx-auto"
+      className="px-4 pt-32 md:pt-40 pb-20 md:pb-32 max-w-6xl mx-auto"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="mt-28">
