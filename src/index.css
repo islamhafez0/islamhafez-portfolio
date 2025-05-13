@@ -79,9 +79,21 @@
   color: white;
   padding: 5px;
   width: 100%;
-
   border-radius: 4px;
   top: -40px;
   left: 0;
   z-index: 10;
+}
+.animate-transform {
+  animation: trans 1s ease-in-out 0.5s infinite alternate;
+  @apply transition-transform duration-200;
+}
+
+@keyframes trans {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
