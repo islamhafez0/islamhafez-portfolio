@@ -12,6 +12,13 @@ export const experiences: {
       "Developed and optimized user-friendly web applications using React.js, focusing on reusable components and enhancing performance.",
   },
   {
+    title: "Frontend Developer Freelancer",
+    company: "Self-Employed",
+    period: "August  2024 - Present",
+    description:
+      "As a freelance Frontend Developer, I've had the chance to work on a variety of exciting projects—from building custom WordPress themes completely from scratch to developing advanced full-stack React applications. One of the projects I'm proudest of is a secure quiz app with OTP-protected access and session validation. I've also worked on e-commerce frontends, personal portfolios, and UI-heavy applications using tools like React.js, Next.js, and Firebase. Each project helped me grow—not just in technical skill, but also in understanding how to build clean, responsive, and user-centered interfaces that perform well and feel great to use. I enjoy translating ideas into real, usable products that clients and users love.",
+  },
+  {
     title: "Frontend Developer Internship",
     company: "Code Alpha Company",
     period: "APRIL 2024 – AUGUST 2024",
