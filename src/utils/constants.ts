@@ -12,18 +12,18 @@ export const experiences: {
       "As a freelance Frontend Developer, I've had the chance to work on a variety of exciting projects—from building custom WordPress themes completely from scratch to developing advanced full-stack React applications. One of the projects I'm proudest of is a secure quiz app with OTP-protected access and session validation. I've also worked on e-commerce frontends, personal portfolios, and UI-heavy applications using tools like React.js, Next.js, and Firebase. Each project helped me grow—not just in technical skill, but also in understanding how to build clean, responsive, and user-centered interfaces that perform well and feel great to use. I enjoy translating ideas into real, usable products that clients and users love.",
   },
   {
-    title: "Frontend Developer",
+    title: "Odoo Frontend Developer",
     company: "Pearl Pixels Company",
     period: "OCTOBER 2024 - Present",
     description:
-      "Developed and optimized user-friendly web applications using React.js, focusing on reusable components and enhancing performance.",
+      "As an Odoo Frontend Developer at Pearl Pixels, I work on building full-stack web solutions tailored to our business needs using the Odoo ERP system. I develop custom modules and APIs with Python, and integrate them seamlessly into the frontend using OWL (Odoo Web Library), focusing on dynamic, server-rendered data and performance. I turn Figma designs into pixel-perfect Odoo themes, build fully custom websites, and continuously find creative solutions to improve our development flow. My role bridges the gap between frontend design and backend logic—ensuring everything fits naturally into the Odoo ecosystem while delivering a smooth user experience.",
   },
   {
-    title: "Frontend Developer Internship",
+    title: "Frontend React Developer Internship",
     company: "Code Alpha Company",
     period: "APRIL 2024 – AUGUST 2024",
     description:
-      "Developed user-friendly web applications using React.js, focusing on reusable components and performance optimization.",
+      "Contributed to the development of responsive, user-friendly web applications using React.js, HTML, and CSS. Worked closely with UI/UX designers to turn wireframes into clean, interactive components. Focused on performance optimization, code reusability, and accessibility best practices. Integrated RESTful APIs and GraphQL endpoints to ensure seamless data flow. Used React Developer Tools and modern debugging practices to identify and fix issues efficiently. Gained valuable experience collaborating remotely within an agile team.",
   },
 ];
 
