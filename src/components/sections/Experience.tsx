@@ -41,7 +41,7 @@ export default function Experience() {
               </h3>
               <p className="text-indigo-400 mb-2">{exp.company}</p>
               <p className="text-gray-500 text-sm mb-4">{exp.period}</p>
-              <p className="text-gray-400">{exp.description}</p>
+              <p className="text-gray-400 line-clamp-4">{exp.description}</p>
             </div>
           </motion.div>
         ))}
