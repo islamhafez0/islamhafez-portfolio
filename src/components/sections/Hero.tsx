@@ -87,7 +87,7 @@ const Hero = () => {
                 <Linkedin className="w-6 h-6" />
               </motion.a>
               <motion.a
-                href="mailto:Islamhafez044@gmail.com"
+                href="mailto:islamhafez806@gmail.com"
                 title="Send email to Islam Hafez"
                 aria-label="Send email to Islam Hafez"
                 className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
