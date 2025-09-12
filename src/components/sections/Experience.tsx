@@ -1,13 +1,26 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { experiences } from "../../utils/constants";
 import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 export default function Experience() {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
+  
+  const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
+  
+  const toggleExpanded = (index: number) => {
+    const newExpandedItems = new Set(expandedItems);
+    if (newExpandedItems.has(index)) {
+      newExpandedItems.delete(index);
+    } else {
+      newExpandedItems.add(index);
+    }
+    setExpandedItems(newExpandedItems);
+  };
 
   return (
     <div className="px-4 py-20 bg-gray-900/50 backdrop-blur-sm" id="experience">
@@ -41,7 +54,29 @@ export default function Experience() {
               </h3>
               <p className="text-indigo-400 mb-2">{exp.company}</p>
               <p className="text-gray-500 text-sm mb-4">{exp.period}</p>
-              <p className="text-gray-400 line-clamp-4">{exp.description}</p>
+              <div className="text-gray-400">
+                <p className={expandedItems.has(index) ? "" : "line-clamp-4"}>
+                  {exp.description}
+                </p>
+                {exp.description.length > 200 && (
+                  <button
+                    onClick={() => toggleExpanded(index)}
+                    className="flex items-center gap-1 mt-2 text-indigo-400 hover:text-indigo-300 transition-colors text-sm"
+                  >
+                    {expandedItems.has(index) ? (
+                      <>
+                        <ChevronUp className="w-4 h-4" />
+                        Show less
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-4 h-4" />
+                        See more
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}
