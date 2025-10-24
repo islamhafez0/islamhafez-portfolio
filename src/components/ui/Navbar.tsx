@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Logo from "./Logo";
+import { Menu, X } from "lucide-react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const { scrollY } = useScroll();
   const headerBackground = useTransform(
     scrollY,
@@ -25,6 +26,51 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = ["about", "experience", "projects", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
+    const handleScrollPosition = () => {
+      const aboutSection = document.getElementById("about");
+      if (aboutSection) {
+        const aboutTop = aboutSection.getBoundingClientRect().top;
+        if (aboutTop > window.innerHeight / 2) {
+          setActiveSection("");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollPosition);
+    handleScrollPosition();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScrollPosition);
+    };
+  }, []);
+
   return (
     <motion.nav
       style={{
@@ -37,12 +83,16 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16 w-full">
           <Logo />
-          <div className="hidden md:flex items-center space-x-8">
-            {["About", "Skills", "Projects", "Contact"].map((item) => (
+          <div className="hidden md:flex items-center space-x-6">
+            {["About", "Experience", "Projects", "Contact"].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-white transition-colors"
+                className={`transition-colors ${
+                  activeSection === item.toLowerCase()
+                    ? "text-white font-medium scale-110 transition-all duration-100"
+                    : "text-gray-300 hover:text-white"
+                }`}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -51,14 +101,15 @@ const Navbar = () => {
             ))}
           </div>
 
-          <motion.button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-            aria-label={`${isMenuOpen ? "Close" : "Menu"}`}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </motion.button>
+          <div className="md:hidden flex items-center gap-3">
+            <motion.button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+              aria-label={`${isMenuOpen ? "Close" : "Menu"}`}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </motion.button>
+          </div>
         </div>
       </div>
 
@@ -70,11 +121,15 @@ const Navbar = () => {
           className="md:hidden bg-black/95 backdrop-blur-sm"
         >
           <div className="px-4 pt-2 pb-4 space-y-4">
-            {["About", "Skills", "Projects", "Contact"].map((item) => (
+            {["About", "Experience", "Projects", "Contact"].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="block text-gray-300 hover:text-white transition-colors"
+                className={`block transition-colors ${
+                  activeSection === item.toLowerCase()
+                    ? "text-white font-semibold border-l-2 border-indigo-500 pl-2"
+                    : "text-gray-300 hover:text-white"
+                }`}
                 whileHover={{ x: 10 }}
                 whileTap={{ scale: 0.95 }}
               >

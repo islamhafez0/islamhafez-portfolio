@@ -1,33 +1,6 @@
 import { motion } from "framer-motion";
-export const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React.js",
-  "Next.js",
-  "Firebase",
-  "API Integration",
-  "CSS Frameworks",
-  "CSS Preprocessors",
-  "Responsive Design",
-  "Redux",
-  "Context API",
-  "TypeScript",
-  "Jest",
-  "Node.js",
-  "MongoDB",
-  "Express.js",
-  "odoo",
-  "Python",
-  "PostgreSQL",
-  "Qweb",
-  "OWL",
-  "Git",
-  "SEO",
-  "Performance Optimization",
-  "Team Collaboration",
-  "Time Management",
-];
+import { skills } from "../../utils/constants";
+
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {

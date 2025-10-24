@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Github, ExternalLink, Code2 } from "lucide-react";
+import { Github, ExternalLink, Code2, TrendingUp } from "lucide-react";
 import { projects } from "../../utils/constants";
 
 const Projects = () => {
@@ -19,7 +19,7 @@ const Projects = () => {
         className="max-w-6xl mx-auto"
       >
         <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -57,6 +57,7 @@ const Projects = () => {
                   <motion.a
                     href={project.github}
                     target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`Github repository for ${project.title} `}
                     className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
                     whileHover={{ scale: 1.1 }}
@@ -68,6 +69,7 @@ const Projects = () => {
                     href={project.demo}
                     aria-label={`Preview for ${project.title} `}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}

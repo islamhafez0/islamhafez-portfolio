@@ -9,9 +9,9 @@ export default function Experience() {
     threshold: 0.1,
     triggerOnce: true,
   });
-  
+
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
-  
+
   const toggleExpanded = (index: number) => {
     const newExpandedItems = new Set(expandedItems);
     if (newExpandedItems.has(index)) {
