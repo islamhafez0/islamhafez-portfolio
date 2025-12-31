@@ -97,7 +97,7 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full">
+                  <div className="p-3 bg-indigo-900 rounded-full">
                     <Mail className="w-6 h-6 text-indigo-400" />
                   </div>
                   <div>
