@@ -31,7 +31,7 @@ const Projects = () => {
               <div className="relative aspect-video overflow-hidden">
                 <img
                   src={project.image}
-                  srcSet={`${project.image.replace('w=700', 'w=400')} 400w, ${project.image.replace('w=700', 'w=600')} 600w, ${project.image} 700w`}
+                  srcSet={`${project.image.replace('w=665', 'w=400')} 400w, ${project.image.replace('w=665', 'w=600')} 600w, ${project.image} 665w`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 665px"
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

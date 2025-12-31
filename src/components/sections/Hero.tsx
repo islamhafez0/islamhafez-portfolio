@@ -127,11 +127,11 @@ const Hero = () => {
         >
           <div className="absolute inset-0 z-10" />
           <img
-            src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6757e1e6a347d3d02d3580bb_CHARACTERS%20FULL.webp"
+            src="/images/character-hero.webp"
             alt="3D Character Illustration"
             className="w-full h-full object-contain object-center animate-transform"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             width="665"
             height="445"
             decoding="async"
