@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="SeR0OyLcVVN5NLiKSbeEvdw4iWDSzJf7oGJMJ-R0FTw" />
 
+    <link rel="dns-prefetch" href="https://cdn.prod.website-files.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin />
+
+    <link
+      rel="preload"
+      as="image"
+      href="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6757e1e6a347d3d02d3580bb_CHARACTERS%20FULL.webp"
+      fetchpriority="high"
+    />
+
     <title>Islam Hafez | Frontend Developer | React, Next.js, Odoo Specialist</title>
     <meta
       name="title"
@@ -88,19 +100,33 @@
       }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/roboto-v30-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/roboto-v30-latin-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56FPB951B0"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-56FPB951B0');
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-56FPB951B0';
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-56FPB951B0');
+      });
     </script>
   </head>
   <body>

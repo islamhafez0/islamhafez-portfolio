@@ -128,9 +128,13 @@ const Hero = () => {
           <div className="absolute inset-0 z-10" />
           <img
             src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6757e1e6a347d3d02d3580bb_CHARACTERS%20FULL.webp"
-            // src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-3908-61f8-90ec-efa9b3c587a6/raw?se=2025-05-13T22%3A03%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=30ec2761-8f41-44db-b282-7a0f8809659b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-13T20%3A34%3A33Z&ske=2025-05-14T20%3A34%3A33Z&sks=b&skv=2024-08-04&sig=tP2hoPIPCfnt2OdwaaM7tW9H9so0ZBidFqCskYwYQ8o%3D"
             alt="3D Character Illustration"
             className="w-full h-full object-contain object-center animate-transform"
+            loading="eager"
+            fetchpriority="high"
+            width="665"
+            height="445"
+            decoding="async"
           />
         </motion.div>
       </div>

@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted Roboto fonts */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/roboto-v30-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/roboto-v30-latin-700.woff2') format('woff2');
+}
+
 @layer base {
   html {
     font-family: "Roboto", sans-serif;

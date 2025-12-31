@@ -6,14 +6,14 @@ export const experiences: {
 }[] = [
   {
     title: "Odoo Frontend Developer",
-    company: "Pearl Pixels",
+    company: "TaqaTechno",
     period: "October 2024 - Present",
     description:
-      "As an Odoo Frontend Developer at Pearl Pixels, I work on building full-stack web solutions tailored to our business needs using the Odoo ERP system. I develop custom modules and APIs with Python, and integrate them seamlessly into the frontend using OWL (Odoo Web Library), focusing on dynamic, server-rendered data and performance. I turn Figma designs into pixel-perfect Odoo themes, build fully custom websites, and continuously find creative solutions to improve our development flow. My role bridges the gap between frontend design and backend logic—ensuring everything fits naturally into the Odoo ecosystem while delivering a smooth user experience.",
+      "As an Odoo Frontend Developer at TaqaTechno, I work on building full-stack web solutions tailored to our business needs using the Odoo ERP system. I develop custom modules and APIs with Python, and integrate them seamlessly into the frontend using OWL (Odoo Web Library), focusing on dynamic, server-rendered data and performance. I turn Figma designs into pixel-perfect Odoo themes, build fully custom websites, and continuously find creative solutions to improve our development flow. My role bridges the gap between frontend design and backend logic—ensuring everything fits naturally into the Odoo ecosystem while delivering a smooth user experience.",
   },
   // {
   //   title: "Frontend Angular Developer",
-  //   company: "Taqat for Technology - Pearl Pixels",
+  //   company: "Taqat for Technology - TaqaTechno",
   //   period: "June 2024 - September 2024",
   //   description:
   //     "Worked on two enterprise fintech applications as a contract side project, making 88 commits and contributing over 29,000 lines of Angular code through system updates and building new features from scratch. Developed key features including a sponsored user management system, device tracking capabilities, wallet and top-up functionality, and an SMS payment system with OTP verification and settlement management. Built new modules using Angular 17 with NgRx for state management, integrated over 60 RESTful APIs across both applications, and implemented comprehensive error handling and data flow management. This experience strengthened my ability to work independently on large-scale applications, manage complex state across multiple modules, and deliver production-ready fintech solutions.",
@@ -48,7 +48,7 @@ export const projects: {
       "A feature-rich YouTube clone with video playback, dynamic feed, and responsive UI. Built custom video player with advanced controls and implemented infinite scroll for seamless browsing.",
     tech: ["React", "TypeScript", "YouTube API", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/youtube-clone",
     demo: "https://islamhafez-youtubeclone.vercel.app/",
   },
@@ -58,7 +58,7 @@ export const projects: {
       "Python-based web crawler for automated data extraction and analysis. Features intelligent scraping with rate limiting, data cleaning, and RESTful API for accessing scraped content.",
     tech: ["Python", "Scrapy", "Flask", "Books to scrap"],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/web-crawler",
     demo: "https://books-to-scrap.vercel.app/books",
   },
@@ -68,7 +68,7 @@ export const projects: {
       "Advanced GitHub profile and repository explorer with search, filtering, and detailed analytics. Features user profile cards, repository statistics, and language breakdowns.",
     tech: ["React", "TypeScript", "GitHub API v3", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/github-finder",
     demo: "https://islamhafez-githubbrowser.vercel.app/",
   },
@@ -78,7 +78,7 @@ export const projects: {
       "Full-stack blog platform with Firebase authentication, rich text editing, and real-time updates. Features user profiles, comment system, and post categorization.",
     tech: ["React", "TypeScript", "Firebase", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/blog-post-platform",
     demo: "https://blog-post-d18a6.web.app/",
   },
@@ -88,7 +88,7 @@ export const projects: {
       "AI-powered chat interface replicating Google's Gemini with conversation history, multi-turn dialogues, and Firebase authentication. Features markdown rendering and code syntax highlighting.",
     tech: ["React", "Gemini AI API", "Firebase Auth", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/gemini-clone",
     demo: "https://gemini-clone-9c740.web.app/",
   },
@@ -98,7 +98,7 @@ export const projects: {
       "Modern e-commerce platform with shopping cart, Stripe payment integration, real-time inventory management, and CMS-powered product catalog using Sanity.",
     tech: ["Next.js", "TypeScript", "Stripe", "Sanity CMS", "Tailwind CSS"],
     image:
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=60&w=700&fm=webp",
     github: "https://github.com/islamhafez0/nextjs-commerce",
     demo: "https://ecommerce-website-five-flax.vercel.app/",
   },
