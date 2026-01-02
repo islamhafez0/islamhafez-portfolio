@@ -276,8 +276,11 @@ function Hero() {
 export default Hero;
 
 const AnimatedSphere = () => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isTablet =
+    typeof window !== "undefined" &&
+    window.innerWidth >= 768 &&
+    window.innerWidth < 1024;
   const scale = isMobile ? 2.2 : isTablet ? 2.4 : 2.5;
 
   return (
