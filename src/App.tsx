@@ -12,7 +12,9 @@ const Footer = lazy(() => import("./components/sections/Footer"));
 // const Background = lazy(() => import("./components/BackgroundAnimation"));
 const CustomCursor = lazy(() => import("./components/ui/CustomCursor"));
 const ScrollProgress = lazy(() => import("./components/ui/ScrollProgress"));
-
+const GitHubContributions = lazy(
+  () => import("./components/sections/GitHubContributions")
+);
 function App() {
   // const [loadBackground, setLoadBackground] = useState(false);
 
@@ -59,6 +61,7 @@ function App() {
           <About />
           <Experience />
           <Skills />
+          <GitHubContributions />
           <Projects />
           <Testimonials />
           <Contact />
