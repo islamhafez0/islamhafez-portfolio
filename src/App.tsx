@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy } from "react";
 
 const Navbar = lazy(() => import("./components/ui/Navbar"));
 const Hero = lazy(() => import("./components/sections/Hero"));
@@ -9,19 +9,19 @@ const Projects = lazy(() => import("./components/sections/Projects"));
 const Testimonials = lazy(() => import("./components/sections/Testimonials"));
 const Contact = lazy(() => import("./components/sections/Contact"));
 const Footer = lazy(() => import("./components/sections/Footer"));
-const Background = lazy(() => import("./components/BackgroundAnimation"));
+// const Background = lazy(() => import("./components/BackgroundAnimation"));
 const CustomCursor = lazy(() => import("./components/ui/CustomCursor"));
 const ScrollProgress = lazy(() => import("./components/ui/ScrollProgress"));
 
 function App() {
-  const [loadBackground, setLoadBackground] = useState(false);
+  // const [loadBackground, setLoadBackground] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoadBackground(true);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoadBackground(true);
+  //   }, 1500);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className="min-h-screen transition-colors duration-300">
@@ -32,11 +32,11 @@ function App() {
         Skip to main content
       </a>
 
-      {loadBackground && (
+      {/* {loadBackground && (
         <Suspense fallback={null}>
           <Background />
         </Suspense>
-      )}
+      )} */}
 
       <Suspense
         fallback={

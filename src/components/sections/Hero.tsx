@@ -5,14 +5,22 @@ import {
   ChevronDown,
   Download,
   MessageSquare,
+  Code2,
+  Layers,
+  Palette,
+  Terminal,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-const Hero = () => {
+import { Canvas } from "@react-three/fiber";
+import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
+
+function Hero() {
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,6 +35,46 @@ const Hero = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const floatingIcons = [
+    {
+      Icon: Code2,
+      delay: 0,
+      x: -140,
+      y: -140,
+      color: "#818cf8",
+      mobileX: -80,
+      mobileY: -80,
+    },
+    {
+      Icon: Layers,
+      delay: 0.3,
+      x: 140,
+      y: -140,
+      color: "#818cf8",
+      mobileX: 80,
+      mobileY: -80,
+    },
+    {
+      Icon: Palette,
+      delay: 0.6,
+      x: -140,
+      y: 140,
+      color: "#818cf8",
+      mobileX: -80,
+      mobileY: 80,
+    },
+    {
+      Icon: Terminal,
+      delay: 0.9,
+      x: 140,
+      y: 140,
+      color: "#818cf8",
+      mobileX: 80,
+      mobileY: 80,
+    },
+  ];
+
   return (
     <motion.section
       ref={heroRef}
@@ -53,90 +101,156 @@ const Hero = () => {
             Front-end developer crafting beautiful, responsive, and
             user-friendly web experiences.
           </motion.p>
-          <>
-            {" "}
-            <motion.div
-              className="flex justify-center md:justify-start gap-4 mt-8"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { delay: 0.4 } },
-              }}
-            >
-              <motion.a
-                href="https://github.com/islamhafez0"
-                rel="noopener noreferrer"
-                aria-label="Github profile"
-                title="Islam Hafez's github"
-                target="_blank"
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Github className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/islam-hafez-103902246/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Islam Hafez's linkedin"
-                aria-label="Linkendin profile"
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Linkedin className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                href="mailto:islamhafez806@gmail.com"
-                title="Send email to Islam Hafez"
-                aria-label="Send email to Islam Hafez"
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                download
-                href="/Islam_Hafez_Frontend_Developer_Resume.pdf"
-                title="Download Islam Hafez's resume"
-                aria-label="Islam Hafez's resume"
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download className="w-6 h-6" />
-              </motion.a>
-            </motion.div>
+          <motion.div
+            className="flex justify-center md:justify-start gap-4 mt-8"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { delay: 0.4 } },
+            }}
+          >
             <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
+              href="https://github.com/islamhafez0"
+              rel="noopener noreferrer"
+              aria-label="Github profile"
+              title="Islam Hafez's github"
+              target="_blank"
+              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+              whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center mt-6 w-full md:w-52 justify-center gap-4 px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
             >
-              Get In Touch
-              <MessageSquare className="w-5 h-5" />
+              <Github className="w-6 h-6" />
             </motion.a>
-          </>
+            <motion.a
+              href="https://linkedin.com/in/islam-hafez-103902246/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Islam Hafez's linkedin"
+              aria-label="Linkendin profile"
+              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin className="w-6 h-6" />
+            </motion.a>
+            <motion.a
+              href="mailto:islamhafez806@gmail.com"
+              title="Send email to Islam Hafez"
+              aria-label="Send email to Islam Hafez"
+              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Mail className="w-6 h-6" />
+            </motion.a>
+            <motion.a
+              download
+              href="/Islam_Hafez_Frontend_Developer_Resume.pdf"
+              title="Download Islam Hafez's resume"
+              aria-label="Islam Hafez's resume"
+              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download className="w-6 h-6" />
+            </motion.a>
+          </motion.div>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center mt-6 w-full md:w-52 justify-center gap-4 px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            Get In Touch
+            <MessageSquare className="w-5 h-5" />
+          </motion.a>
         </div>
-        <motion.div
-          className="relative h-auto lg:h-[500px] lg:block mt-8 lg:mt-0"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="absolute inset-0 z-10" />
-          <img
-            src="/images/character-hero.webp"
-            alt="3D Character Illustration"
-            className="w-full h-full object-contain object-center animate-transform"
-            loading="eager"
-            fetchPriority="high"
-            width="665"
-            height="445"
-            decoding="async"
-          />
-        </motion.div>
+        <div className="relative h-[500px] lg:h-[600px]">
+          <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1} />
+            <AnimatedSphere />
+            <OrbitControls
+              enableZoom={false}
+              autoRotate
+              autoRotateSpeed={0.3}
+              enablePan={false}
+              enableRotate={false}
+            />
+          </Canvas>
+
+          <div className="absolute inset-0 pointer-events-none">
+            {floatingIcons.map(
+              ({ Icon, delay, x, y, color, mobileX, mobileY }, index) => (
+                <motion.div
+                  key={index}
+                  className="absolute top-1/2 left-1/2 bg-gray-900/90 backdrop-blur-md p-2 md:p-3 lg:p-4 rounded-xl md:rounded-2xl border border-gray-700/50 shadow-2xl"
+                  style={{
+                    boxShadow: `0 0 20px ${color}30, 0 0 40px ${color}15`,
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: [0, 360],
+                    x: [
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileX
+                        : x,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileX + 2
+                        : x + 3,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileX - 2
+                        : x - 3,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileX
+                        : x,
+                    ],
+                    y: [
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileY
+                        : y,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileY - 2
+                        : y - 3,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileY + 2
+                        : y + 3,
+                      typeof window !== "undefined" && window.innerWidth < 1024
+                        ? mobileY
+                        : y,
+                    ],
+                  }}
+                  transition={{
+                    opacity: { delay: delay + 0.8, duration: 0.5 },
+                    scale: { delay: delay + 0.8, duration: 0.5 },
+                    x: {
+                      delay: delay + 1.3,
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                    y: {
+                      delay: delay + 1.3,
+                      duration: 7,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                    rotate: {
+                      delay: delay + 2,
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+                </motion.div>
+              )
+            )}
+          </div>
+        </div>
       </div>
       <div className="flex justify-center mt-16">
         <motion.a
@@ -158,5 +272,19 @@ const Hero = () => {
       </div>
     </motion.section>
   );
-};
+}
 export default Hero;
+
+const AnimatedSphere = () => {
+  return (
+    <Sphere args={[1, 64, 128]} scale={2.5}>
+      <MeshDistortMaterial
+        color="#6366f1"
+        attach="material"
+        distort={0.3}
+        speed={1.5}
+        roughness={0.2}
+      />
+    </Sphere>
+  );
+};
