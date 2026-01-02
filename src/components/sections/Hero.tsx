@@ -164,7 +164,7 @@ function Hero() {
             <MessageSquare className="w-5 h-5" />
           </motion.a>
         </div>
-        <div className="relative h-[500px] lg:h-[600px]">
+        <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
           <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -276,8 +276,12 @@ function Hero() {
 export default Hero;
 
 const AnimatedSphere = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
+  const scale = isMobile ? 2.2 : isTablet ? 2.4 : 2.5;
+
   return (
-    <Sphere args={[1, 64, 128]} scale={2.5}>
+    <Sphere args={[1, 64, 128]} scale={scale}>
       <MeshDistortMaterial
         color="#6366f1"
         attach="material"
