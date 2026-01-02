@@ -11,13 +11,13 @@ export const experiences: {
     description:
       "As an Odoo Frontend Developer at TaqaTechno, I work on building full-stack web solutions tailored to our business needs using the Odoo ERP system. I develop custom modules and APIs with Python, and integrate them seamlessly into the frontend using OWL (Odoo Web Library), focusing on dynamic, server-rendered data and performance. I turn Figma designs into pixel-perfect Odoo themes, build fully custom websites, and continuously find creative solutions to improve our development flow. My role bridges the gap between frontend design and backend logic—ensuring everything fits naturally into the Odoo ecosystem while delivering a smooth user experience.",
   },
-  // {
-  //   title: "Frontend Angular Developer",
-  //   company: "Taqat for Technology - TaqaTechno",
-  //   period: "June 2024 - September 2024",
-  //   description:
-  //     "Worked on two enterprise fintech applications as a contract side project, making 88 commits and contributing over 29,000 lines of Angular code through system updates and building new features from scratch. Developed key features including a sponsored user management system, device tracking capabilities, wallet and top-up functionality, and an SMS payment system with OTP verification and settlement management. Built new modules using Angular 17 with NgRx for state management, integrated over 60 RESTful APIs across both applications, and implemented comprehensive error handling and data flow management. This experience strengthened my ability to work independently on large-scale applications, manage complex state across multiple modules, and deliver production-ready fintech solutions.",
-  // },
+  {
+    title: "Frontend Angular Developer",
+    company: "TaqaTechno",
+    period: "June 2024 - September 2024",
+    description:
+      "Worked on two enterprise fintech applications as a contract side project, making 88 commits and contributing over 29,000 lines of Angular code through system updates and building new features from scratch. Developed key features including a sponsored user management system, device tracking capabilities, wallet and top-up functionality, and an SMS payment system with OTP verification and settlement management. Built new modules using Angular 17 with NgRx for state management, integrated over 60 RESTful APIs across both applications, and implemented comprehensive error handling and data flow management. This experience strengthened my ability to work independently on large-scale applications, manage complex state across multiple modules, and deliver production-ready fintech solutions.",
+  },
   {
     title: "Frontend Developer Freelancer",
     company: "Self-Employed",
