@@ -12,8 +12,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
+import { Suspense, lazy } from "react";
+
+const AnimatedCanvas = lazy(() => import("../3d/AnimatedCanvas"));
 
 function Hero() {
   const [heroRef, heroInView] = useInView({
@@ -165,18 +166,15 @@ function Hero() {
           </motion.a>
         </div>
         <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
-          <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <AnimatedSphere />
-            <OrbitControls
-              enableZoom={false}
-              autoRotate
-              autoRotateSpeed={0.3}
-              enablePan={false}
-              enableRotate={false}
-            />
-          </Canvas>
+          <Suspense
+            fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-32 h-32 bg-indigo-600/20 rounded-full animate-pulse" />
+              </div>
+            }
+          >
+            <AnimatedCanvas />
+          </Suspense>
 
           <div className="absolute inset-0 pointer-events-none">
             {floatingIcons.map(
@@ -186,6 +184,8 @@ function Hero() {
                   className="absolute top-1/2 left-1/2 bg-gray-900/90 backdrop-blur-md p-2 md:p-3 lg:p-4 rounded-xl md:rounded-2xl border border-gray-700/50 shadow-2xl"
                   style={{
                     boxShadow: `0 0 20px ${color}30, 0 0 40px ${color}15`,
+                    willChange: 'transform, opacity',
+                    transform: 'translateZ(0)',
                   }}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{
@@ -258,6 +258,10 @@ function Hero() {
           href="#about"
           aria-label="Scroll to the about section"
           title="Scroll to about section"
+          style={{
+            willChange: 'transform',
+            transform: 'translateZ(0)',
+          }}
           animate={{
             y: [0, 10, 0],
           }}
@@ -274,24 +278,3 @@ function Hero() {
   );
 }
 export default Hero;
-
-const AnimatedSphere = () => {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const isTablet =
-    typeof window !== "undefined" &&
-    window.innerWidth >= 768 &&
-    window.innerWidth < 1024;
-  const scale = isMobile ? 2.2 : isTablet ? 2.4 : 2.5;
-
-  return (
-    <Sphere args={[1, 64, 128]} scale={scale}>
-      <MeshDistortMaterial
-        color="#6366f1"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0.2}
-      />
-    </Sphere>
-  );
-};

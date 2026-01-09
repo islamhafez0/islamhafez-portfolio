@@ -55,18 +55,28 @@ function App() {
         <ScrollProgress />
         <CustomCursor />
         <Navbar />
+        <Hero />
+      </Suspense>
 
-        <main id="main-content">
-          <Hero />
+      <main id="main-content">
+        <Suspense fallback={null}>
           <About />
           <Experience />
+        </Suspense>
+
+        <Suspense fallback={null}>
           <Skills />
           <GitHubContributions />
+        </Suspense>
+
+        <Suspense fallback={null}>
           <Projects />
           <Testimonials />
           <Contact />
-        </main>
+        </Suspense>
+      </main>
 
+      <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </div>
