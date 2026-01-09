@@ -177,7 +177,7 @@ const Footer = () => {
         <div className="my-8 h-px bg-gray-800" />
 
         <div className="flex flex-col-reverse gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-600">
             © {year} {BRAND.name}. All rights reserved.
           </p>
         </div>
