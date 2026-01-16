@@ -16,7 +16,9 @@ export const experiences: {
     company: "TaqaTechno",
     period: "June 2024 - September 2024",
     description:
-      "Worked on two enterprise fintech applications as a contract side project, making 88 commits and contributing over 29,000 lines of Angular code through system updates and building new features from scratch. Developed key features including a sponsored user management system, device tracking capabilities, wallet and top-up functionality, and an SMS payment system with OTP verification and settlement management. Built new modules using Angular 17 with NgRx for state management, integrated over 60 RESTful APIs across both applications, and implemented comprehensive error handling and data flow management. This experience strengthened my ability to work independently on large-scale applications, manage complex state across multiple modules, and deliver production-ready fintech solutions.",
+      "Worked on two enterprise-grade fintech applications as a contract side project, contributing to system upgrades and building multiple features from scratch. Developed core functionality including sponsored user management, device tracking, wallets and top-ups, and an SMS-based payment system with OTP verification and settlement management.
+
+Built and maintained modular Angular 17 applications using NgRx for state management, integrating 60+ RESTful APIs with robust error handling and data flow control. This work required independent ownership of large feature sets, managing complex application state across multiple modules, and delivering secure, production-ready fintech solutions.",
   },
   {
     title: "Frontend Developer Freelancer",
