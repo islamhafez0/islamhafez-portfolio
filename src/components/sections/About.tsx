@@ -125,7 +125,7 @@ const highlights: Highlight[] = [
     title: "Frontend Angular Developer",
     period: "Jun — Sep 2024",
     description:
-      "Contributed 29,000+ lines of Angular 17 code across two enterprise fintech applications. Built wallet systems, SMS payments with OTP verification, and integrated 60+ RESTful APIs with NgRx state management.",
+      "Delivered large-scale Angular 17 features across two enterprise fintech platforms, including wallets, top-ups, and SMS-based payments with OTP verification, integrating 60+ RESTful APIs with NgRx-managed state.",
     icon: Rocket,
   },
   {
