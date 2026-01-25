@@ -35,6 +35,7 @@ export const experiences: {
 ];
 
 export const projects: {
+  id: number;
   title: string;
   description: string;
   tech: string[];
@@ -43,16 +44,18 @@ export const projects: {
   demo: string;
 }[] = [
   {
+    id: 1,
     title: "YouTube Clone",
     description:
       "A feature-rich YouTube clone with video playback, dynamic feed, and responsive UI. Built custom video player with advanced controls and implemented infinite scroll for seamless browsing.",
     tech: ["React", "TypeScript", "YouTube API", "Tailwind CSS"],
-    image:
-      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=40&w=665&fm=webp",
+    // image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=40&w=665&fm=webp",
+    image: "/images/projects/youtube-clone-mockup.png",
     github: "https://github.com/islamhafez0/youtube-clone",
     demo: "https://islamhafez-youtubeclone.vercel.app/",
   },
   {
+    id: 2,
     title: "Web Crawler",
     description:
       "Python-based web crawler for automated data extraction and analysis. Features intelligent scraping with rate limiting, data cleaning, and RESTful API for accessing scraped content.",
@@ -63,6 +66,7 @@ export const projects: {
     demo: "https://books-to-scrap.vercel.app/books",
   },
   {
+    id: 3,
     title: "GitHub Viewer",
     description:
       "Advanced GitHub profile and repository explorer with search, filtering, and detailed analytics. Features user profile cards, repository statistics, and language breakdowns.",
@@ -73,6 +77,7 @@ export const projects: {
     demo: "https://islamhafez-githubbrowser.vercel.app/",
   },
   {
+    id: 4,
     title: "Blog Platform",
     description:
       "Full-stack blog platform with Firebase authentication, rich text editing, and real-time updates. Features user profiles, comment system, and post categorization.",
@@ -83,6 +88,7 @@ export const projects: {
     demo: "https://blog-post-d18a6.web.app/",
   },
   {
+    id: 5,
     title: "Gemini Clone",
     description:
       "AI-powered chat interface replicating Google's Gemini with conversation history, multi-turn dialogues, and Firebase authentication. Features markdown rendering and code syntax highlighting.",
@@ -93,6 +99,7 @@ export const projects: {
     demo: "https://gemini-clone-9c740.web.app/",
   },
   {
+    id: 6,
     title: "E-commerce Website",
     description:
       "Modern e-commerce platform with shopping cart, Stripe payment integration, real-time inventory management, and CMS-powered product catalog using Sanity.",
@@ -101,6 +108,16 @@ export const projects: {
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=40&w=665&fm=webp",
     github: "https://github.com/islamhafez0/nextjs-commerce",
     demo: "https://ecommerce-website-five-flax.vercel.app/",
+  },
+  {
+    id: 7,
+    title: "FluxGen AI",
+    description:
+      "High-fidelity image generation platform powered by FLUX.1 [dev] model. Features a dynamic creation canvas, real-time prompt enhancement, and multi-aspect ratio support for professional AI art generation.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Replicate API", "Framer Motion"],
+    image: "/images/projects/fluxgen-ai-mockup.png",
+    github: "https://github.com/islamhafez0/flux-gen-ai",
+    demo: "https://flux-gen-ai-mockup.vercel.app/",
   },
 ];
 

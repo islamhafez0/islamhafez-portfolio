@@ -13,7 +13,7 @@ const Footer = lazy(() => import("./components/sections/Footer"));
 const CustomCursor = lazy(() => import("./components/ui/CustomCursor"));
 const ScrollProgress = lazy(() => import("./components/ui/ScrollProgress"));
 const GitHubContributions = lazy(
-  () => import("./components/sections/GitHubContributions")
+  () => import("./components/sections/GitHubContributions"),
 );
 function App() {
   // const [loadBackground, setLoadBackground] = useState(false);

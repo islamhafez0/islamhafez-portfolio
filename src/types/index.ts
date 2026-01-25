@@ -8,3 +8,15 @@ export default interface Stats {
   busiestMonth: string;
   yearOverYear: string | null;
 }
+
+export interface Project {
+    id: number;
+    title: string;
+    description: string;
+    tech: string[];
+    image: string;
+    github: string;
+    demo: string;
+    category?: string;
+    color?: string;
+}
