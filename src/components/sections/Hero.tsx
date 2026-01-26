@@ -89,8 +89,12 @@ function Hero() {
       variants={container}
       className="px-4 pt-10 md:pt-20 pb-20 md:pb-32 max-w-6xl mx-auto"
     >
-      <div className="absolute inset-0 z-[1]">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+      <div className="absolute inset-0 z-[1] bg-black">
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 75 }}
+          gl={{ preserveDrawingBuffer: true, antialias: false }}
+          frameloop="always"
+        >
           <color attach="background" args={["#000000"]} />
           <ambientLight intensity={0.2} />
           <pointLight position={[0, 0, 5]} intensity={1} color="#00ffff" />
