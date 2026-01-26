@@ -12,17 +12,14 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import {
   Environment,
   Grid,
   MeshDistortMaterial,
-  MeshTransmissionMaterial,
   OrbitControls,
   Sphere,
 } from "@react-three/drei";
-import { useRef } from "react";
-import * as THREE from "three";
 
 function Hero() {
   const [heroRef, heroInView] = useInView({
@@ -196,7 +193,7 @@ function Hero() {
             <MessageSquare className="w-5 h-5" />
           </motion.a>
         </div>
-        {/* <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
+        <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
           <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -282,7 +279,7 @@ function Hero() {
               ),
             )}
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="flex justify-center mt-16">
         <motion.a
@@ -328,60 +325,60 @@ const AnimatedSphere = () => {
   );
 };
 
-function HologramTorus() {
-  const torusRef = useRef<THREE.Mesh>(null);
+// function HologramTorus() {
+//   const torusRef = useRef<THREE.Mesh>(null);
 
-  useFrame((state) => {
-    if (torusRef.current) {
-      torusRef.current.rotation.x = state.clock.elapsedTime * 0.3;
-      torusRef.current.rotation.y = state.clock.elapsedTime * 0.5;
-    }
-  });
+//   useFrame((state) => {
+//     if (torusRef.current) {
+//       torusRef.current.rotation.x = state.clock.elapsedTime * 0.3;
+//       torusRef.current.rotation.y = state.clock.elapsedTime * 0.5;
+//     }
+//   });
 
-  return (
-    <group>
-      <mesh ref={torusRef}>
-        <torusGeometry args={[1.5, 0.5, 32, 100]} />
-        <MeshTransmissionMaterial
-          backside
-          samples={16}
-          resolution={512}
-          transmission={1}
-          roughness={0}
-          thickness={1}
-          ior={1.5}
-          chromaticAberration={1}
-          anisotropy={1}
-          color="#00ffff"
-          emissive="#00ffff"
-          emissiveIntensity={0.2}
-        />
-      </mesh>
+//   return (
+//     <group>
+//       <mesh ref={torusRef}>
+//         <torusGeometry args={[1.5, 0.5, 32, 100]} />
+//         <MeshTransmissionMaterial
+//           backside
+//           samples={16}
+//           resolution={512}
+//           transmission={1}
+//           roughness={0}
+//           thickness={1}
+//           ior={1.5}
+//           chromaticAberration={1}
+//           anisotropy={1}
+//           color="#00ffff"
+//           emissive="#00ffff"
+//           emissiveIntensity={0.2}
+//         />
+//       </mesh>
 
-      {/* Orbital rings */}
-      {[...Array(3)].map((_, i) => (
-        <mesh key={i} rotation={[Math.PI / 2, 0, (i * Math.PI) / 3]}>
-          <torusGeometry args={[2 + i * 0.5, 0.02, 16, 100]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
+//       {/* Orbital rings */}
+//       {[...Array(3)].map((_, i) => (
+//         <mesh key={i} rotation={[Math.PI / 2, 0, (i * Math.PI) / 3]}>
+//           <torusGeometry args={[2 + i * 0.5, 0.02, 16, 100]} />
+//           <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
+//         </mesh>
+//       ))}
+//     </group>
+//   );
+// }
 
-function ScanLines() {
-  const ref = useRef<THREE.Mesh>(null);
+// function ScanLines() {
+//   const ref = useRef<THREE.Mesh>(null);
 
-  useFrame((state) => {
-    if (ref.current) {
-      ref.current.position.y = (state.clock.elapsedTime % 2) * 5 - 2.5;
-    }
-  });
+//   useFrame((state) => {
+//     if (ref.current) {
+//       ref.current.position.y = (state.clock.elapsedTime % 2) * 5 - 2.5;
+//     }
+//   });
 
-  return (
-    <mesh ref={ref}>
-      <planeGeometry args={[20, 0.1]} />
-      <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
-    </mesh>
-  );
-}
+//   return (
+//     <mesh ref={ref}>
+//       <planeGeometry args={[20, 0.1]} />
+//       <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
+//     </mesh>
+//   );
+// }

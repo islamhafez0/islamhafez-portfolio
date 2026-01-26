@@ -58,11 +58,15 @@ const Slider2Cinematic = () => {
         setShowScrollHint(false);
         const containerTop = containerRef.current.offsetTop;
         const containerHeight = containerRef.current.offsetHeight;
-        const scrollPerSlide = containerHeight / projects.length;
+        const viewportHeight = window.innerHeight;
 
-        // Scroll to the middle of the slide's section
-        const targetScroll =
-          containerTop + i * scrollPerSlide + scrollPerSlide * 0.1; // +10% padding
+        // Calculate scroll range accounting for viewport height
+        // This matches the scrollYProgress calculation with offset ["start start", "end end"]
+        const scrollRange = containerHeight - viewportHeight;
+
+        // Target the middle of the slide's progress range for smooth alignment
+        const targetProgress = (i + 0.5) / projects.length;
+        const targetScroll = containerTop + targetProgress * scrollRange;
 
         window.scrollTo({
           top: targetScroll,
@@ -106,7 +110,7 @@ const Slider2Cinematic = () => {
   useEffect(() => {
     if (contentRef.current) {
       // Set focus to content wrapper for screen reader announcement
-      contentRef.current.focus();
+      contentRef.current.focus({ preventScroll: true });
     }
   }, [index]);
 
