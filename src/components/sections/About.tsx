@@ -273,7 +273,7 @@ const About = () => {
         <SkillsGrid skills={skills} />
 
         {/* Experience Highlights */}
-        <HighlightsList highlights={highlights} />
+        {/* <HighlightsList highlights={highlights} /> */}
       </div>
     </section>
   );
@@ -399,60 +399,60 @@ function SkillCard({ skill }: { skill: Skill }) {
   );
 }
 
-function HighlightsList({ highlights }: { highlights: Highlight[] }) {
-  const shouldReduce = useReducedMotion();
-  return (
-    <div className="w-full">
-      <div className="mb-4 sm:mb-6">
-        <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
-          Experience Highlights
-        </h3>
-      </div>
-      <div className="space-y-4">
-        {highlights.map((h, i) => {
-          const Icon = h.icon;
-          return (
-            <motion.div
-              key={h.title + i}
-              initial={shouldReduce ? undefined : { opacity: 0, y: 10 }}
-              whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20% 0px" }}
-              transition={{
-                delay: shouldReduce ? 0 : i * 0.04,
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="grid gap-4 rounded-xl border border-gray-700/50 bg-gray-800/50 backdrop-blur-sm p-4 sm:p-5 sm:grid-cols-[auto_1fr_auto] hover:border-indigo-500/50 transition-colors"
-              role="article"
-              aria-labelledby={`highlight-${i}-title`}
-            >
-              <div className="flex items-center">
-                <div className="grid w-10 h-10 place-items-center rounded-lg bg-gray-800/80 border border-gray-700/50 text-indigo-400">
-                  <Icon className="w-5 h-5" aria-hidden="true" />
-                </div>
-              </div>
-              <div>
-                <div
-                  id={`highlight-${i}-title`}
-                  className="font-medium text-white"
-                >
-                  {h.title}
-                </div>
-                <div className="mt-1 text-sm text-gray-300 leading-relaxed">
-                  {h.description}
-                </div>
-              </div>
-              <div className="flex items-start justify-end sm:justify-start">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300 text-xs border border-gray-700/50">
-                  {h.period}
-                </span>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+// function HighlightsList({ highlights }: { highlights: Highlight[] }) {
+//   const shouldReduce = useReducedMotion();
+//   return (
+//     <div className="w-full">
+//       <div className="mb-4 sm:mb-6">
+//         <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
+//           Experience Highlights
+//         </h3>
+//       </div>
+//       <div className="space-y-4">
+//         {highlights.map((h, i) => {
+//           const Icon = h.icon;
+//           return (
+//             <motion.div
+//               key={h.title + i}
+//               initial={shouldReduce ? undefined : { opacity: 0, y: 10 }}
+//               whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
+//               viewport={{ once: true, margin: "-20% 0px" }}
+//               transition={{
+//                 delay: shouldReduce ? 0 : i * 0.04,
+//                 duration: 0.45,
+//                 ease: [0.22, 1, 0.36, 1],
+//               }}
+//               className="grid gap-4 rounded-xl border border-gray-700/50 bg-gray-800/50 backdrop-blur-sm p-4 sm:p-5 sm:grid-cols-[auto_1fr_auto] hover:border-indigo-500/50 transition-colors"
+//               role="article"
+//               aria-labelledby={`highlight-${i}-title`}
+//             >
+//               <div className="flex items-center">
+//                 <div className="grid w-10 h-10 place-items-center rounded-lg bg-gray-800/80 border border-gray-700/50 text-indigo-400">
+//                   <Icon className="w-5 h-5" aria-hidden="true" />
+//                 </div>
+//               </div>
+//               <div>
+//                 <div
+//                   id={`highlight-${i}-title`}
+//                   className="font-medium text-white"
+//                 >
+//                   {h.title}
+//                 </div>
+//                 <div className="mt-1 text-sm text-gray-300 leading-relaxed">
+//                   {h.description}
+//                 </div>
+//               </div>
+//               <div className="flex items-start justify-end sm:justify-start">
+//                 <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300 text-xs border border-gray-700/50">
+//                   {h.period}
+//                 </span>
+//               </div>
+//             </motion.div>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
 
 export default About;
