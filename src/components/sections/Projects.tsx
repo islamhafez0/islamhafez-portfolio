@@ -157,16 +157,16 @@ const Projects = () => {
             {showScrollHint && !isMobile && (
               <motion.div
                 className="scroll-hint"
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.2 }}
               >
                 <span>Scroll to explore</span>
                 <motion.div
-                  animate={{ y: [0, 8, 0] }}
+                  animate={{ y: [0, 6, 0] }}
                   transition={{
-                    duration: 1.5,
+                    duration: 1,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
@@ -186,7 +186,7 @@ const Projects = () => {
           </div>
 
           {/* Background */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.div
               key={`bg-${index}`}
               className="cinematic-bg"
@@ -194,7 +194,7 @@ const Projects = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: prefersReducedMotion ? 0.2 : 0.8,
+                duration: prefersReducedMotion ? 0.1 : 0.3,
                 ease: "easeOut",
               }}
             >
@@ -205,7 +205,7 @@ const Projects = () => {
 
           {/* Content */}
           <motion.div className="content-2">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout">
               <motion.div
                 key={`content-${index}`}
                 initial="hidden"
@@ -218,21 +218,21 @@ const Projects = () => {
               >
                 <motion.span
                   className="category-tag-2"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 0.5, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: prefersReducedMotion ? 0.1 : 0.4 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  transition={{ duration: prefersReducedMotion ? 0.05 : 0.15 }}
                 >
                   / {current.title}
                 </motion.span>
 
                 <motion.h2
                   className="cinematic-title"
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{
-                    duration: prefersReducedMotion ? 0.1 : 0.6,
+                    duration: prefersReducedMotion ? 0.05 : 0.2,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                 >
@@ -245,8 +245,8 @@ const Projects = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{
-                    duration: prefersReducedMotion ? 0.1 : 0.5,
-                    delay: prefersReducedMotion ? 0 : 0.2,
+                    duration: prefersReducedMotion ? 0.05 : 0.2,
+                    delay: prefersReducedMotion ? 0 : 0.05,
                   }}
                 >
                   {current.description}
@@ -258,11 +258,11 @@ const Projects = () => {
                       <motion.span
                         key={tag}
                         className="tech-tag"
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
-                          duration: 0.3,
-                          delay: prefersReducedMotion ? 0 : 0.3 + i * 0.05,
+                          duration: 0.15,
+                          delay: prefersReducedMotion ? 0 : 0.1 + i * 0.02,
                         }}
                       >
                         {tag}
@@ -275,8 +275,8 @@ const Projects = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{
-                    duration: prefersReducedMotion ? 0.1 : 0.3,
-                    delay: prefersReducedMotion ? 0 : 0.3,
+                    duration: prefersReducedMotion ? 0.05 : 0.15,
+                    delay: prefersReducedMotion ? 0 : 0.1,
                   }}
                 >
                   <div className="flex items-center gap-6 pt-4">
