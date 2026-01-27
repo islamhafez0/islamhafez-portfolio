@@ -4,11 +4,9 @@ import { useInView } from "react-intersection-observer";
 import {
   Code2,
   Gauge,
-  GitBranch,
   Rocket,
   Trophy,
   ShieldCheck,
-  Wrench,
   Sparkles,
   Calendar,
   FolderGit2,
@@ -37,12 +35,12 @@ interface Achievement {
   icon: IconType;
 }
 
-interface Highlight {
-  title: string;
-  period: string;
-  description: string;
-  icon: IconType;
-}
+// interface Highlight {
+//   title: string;
+//   period: string;
+//   description: string;
+//   icon: IconType;
+// }
 
 const skills: Skill[] = [
   {
