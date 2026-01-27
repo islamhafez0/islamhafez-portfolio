@@ -113,29 +113,29 @@ const achievements: Achievement[] = [
   },
 ];
 
-const highlights: Highlight[] = [
-  {
-    title: "Odoo Frontend Developer",
-    period: "Oct 2024 — Present",
-    description:
-      "Building full-stack web solutions using Odoo ERP, developing custom modules with Python, and creating pixel-perfect themes with OWL (Odoo Web Library) for dynamic, server-rendered applications.",
-    icon: Wrench,
-  },
-  {
-    title: "Frontend Angular Developer",
-    period: "Jun — Sep 2024",
-    description:
-      "Delivered large-scale Angular 17 features across two enterprise fintech platforms, including wallets, top-ups, and SMS-based payments with OTP verification, integrating 60+ RESTful APIs with NgRx-managed state.",
-    icon: Rocket,
-  },
-  {
-    title: "Frontend React Developer Intern",
-    period: "Apr — Aug 2024",
-    description:
-      "Developed responsive web applications using React.js, collaborated with UI/UX designers on component development, and focused on performance optimization and accessibility best practices.",
-    icon: GitBranch,
-  },
-];
+// const highlights: Highlight[] = [
+//   {
+//     title: "Odoo Frontend Developer",
+//     period: "Oct 2024 — Present",
+//     description:
+//       "Building full-stack web solutions using Odoo ERP, developing custom modules with Python, and creating pixel-perfect themes with OWL (Odoo Web Library) for dynamic, server-rendered applications.",
+//     icon: Wrench,
+//   },
+//   {
+//     title: "Frontend Angular Developer",
+//     period: "Jun — Sep 2024",
+//     description:
+//       "Delivered large-scale Angular 17 features across two enterprise fintech platforms, including wallets, top-ups, and SMS-based payments with OTP verification, integrating 60+ RESTful APIs with NgRx-managed state.",
+//     icon: Rocket,
+//   },
+//   {
+//     title: "Frontend React Developer Intern",
+//     period: "Apr — Aug 2024",
+//     description:
+//       "Developed responsive web applications using React.js, collaborated with UI/UX designers on component development, and focused on performance optimization and accessibility best practices.",
+//     icon: GitBranch,
+//   },
+// ];
 
 const About = () => {
   const shouldReduce = useReducedMotion();
