@@ -1,22 +1,26 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { ArrowUpRight, Github, ChevronDown } from "lucide-react";
 import "./projects.css";
 import { projects } from "../../utils/constants";
 import { useReducedMotion, useMediaQuery } from "../../utils/hooks";
 
-const Slider2Cinematic = () => {
+// Configuration constants
+const MIN_SWIPE_DISTANCE = 50; // Minimum swipe distance in pixels
+const SCROLL_HEIGHT_PER_SLIDE = 40; // vh per slide for scroll sensitivity
+const MIN_CONTAINER_HEIGHT = 150; // Minimum container height in vh
+
+const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [showScrollHint, setShowScrollHint] = useState(true);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const touchRef = useRef<{ start: number | null; end: number | null }>({
+    start: null,
+    end: null,
+  });
+  const loadedImagesRef = useRef<Set<string>>(new Set());
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useMediaQuery("(max-width: 768px)");
-
-  // Minimum swipe distance (in px)
-  const minSwipeDistance = 50;
 
   // Scroll progress mapping
   const { scrollYProgress } = useScroll({
@@ -31,8 +35,12 @@ const Slider2Cinematic = () => {
     );
 
     preloadIndices.forEach((i) => {
-      const img = new Image();
-      img.src = projects[i].image;
+      const imageSrc = projects[i].image;
+      if (!loadedImagesRef.current.has(imageSrc)) {
+        const img = new Image();
+        img.src = imageSrc;
+        img.onload = () => loadedImagesRef.current.add(imageSrc);
+      }
     });
   }, [index]);
 
@@ -79,20 +87,20 @@ const Slider2Cinematic = () => {
 
   // Touch gesture handlers for mobile
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+    touchRef.current = { start: e.targetTouches[0].clientX, end: null };
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    touchRef.current.end = e.targetTouches[0].clientX;
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    const { start, end } = touchRef.current;
+    if (start === null || end === null) return;
 
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    const distance = start - end;
+    const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
+    const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
 
     if (isLeftSwipe) {
       const newIndex = Math.min(index + 1, projects.length - 1);
@@ -102,29 +110,35 @@ const Slider2Cinematic = () => {
       if (newIndex !== index) scrollToSlide(newIndex);
     }
 
-    setTouchStart(null);
-    setTouchEnd(null);
+    touchRef.current = { start: null, end: null };
   };
 
-  // Focus management - announce slide changes to screen readers
-  useEffect(() => {
-    if (contentRef.current) {
-      // Set focus to content wrapper for screen reader announcement
-      contentRef.current.focus({ preventScroll: true });
-    }
-  }, [index]);
-
   const current = projects[index];
+
+  // Empty state handling
+  if (!projects.length || !current) {
+    return (
+      <section className="relative w-full bg-black py-28 min-h-screen flex items-center justify-center">
+        <p className="text-white/50 text-xl">No projects to display</p>
+      </section>
+    );
+  }
 
   return (
     <section
       ref={containerRef}
-      // Height = 50vh per slide (Moderate sensitivity)
-      style={{ height: `${Math.max(projects.length * 40, 150)}vh` }}
+      style={{
+        height: `${Math.max(projects.length * SCROLL_HEIGHT_PER_SLIDE, MIN_CONTAINER_HEIGHT)}vh`,
+      }}
       className="relative w-full bg-black py-28"
       aria-roledescription="carousel"
-      aria-label="Project showcase"
+      aria-label={`Project showcase with ${projects.length} projects`}
     >
+      {/* Screen reader announcement */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {`Viewing project ${index + 1} of ${projects.length}: ${current.title}`}
+      </div>
+
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <div
           className={`slider2-container ${isMobile ? "mobile" : ""} h-full w-full`}
@@ -133,7 +147,7 @@ const Slider2Cinematic = () => {
           onTouchEnd={isMobile ? onTouchEnd : undefined}
         >
           {/* Progress Indicator */}
-          <div className="slide-counter" aria-live="polite" aria-atomic="true">
+          <div className="slide-counter" aria-hidden="true">
             {String(index + 1).padStart(2, "0")} /{" "}
             {String(projects.length).padStart(2, "0")}
           </div>
@@ -194,14 +208,12 @@ const Slider2Cinematic = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`content-${index}`}
-                ref={contentRef}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
                 className="content-wrapper"
-                tabIndex={-1}
-                aria-live="polite"
-                aria-atomic="true"
+                role="group"
+                aria-roledescription="slide"
                 aria-label={`Project ${index + 1} of ${projects.length}: ${current.title}`}
               >
                 <motion.span
@@ -302,20 +314,14 @@ const Slider2Cinematic = () => {
 
           {/* Navigation */}
           {!isMobile && (
-            <nav
-              className="nav-line"
-              role="tablist"
-              aria-label="Project navigation"
-            >
+            <nav className="nav-line" aria-label="Project navigation">
               {projects.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => scrollToSlide(i)}
                   className={`nav-item-2 ${i === index ? "active" : ""}`}
-                  aria-label={`View ${p.title}`}
-                  aria-selected={i === index}
-                  role="tab"
-                  tabIndex={i === index ? 0 : -1}
+                  aria-label={`Go to project: ${p.title}`}
+                  aria-current={i === index ? "true" : undefined}
                 >
                   <span className="label">{p.title}</span>
                   <div className="line-indicator" />
@@ -326,23 +332,18 @@ const Slider2Cinematic = () => {
 
           {/* Mobile pagination */}
           {isMobile && (
-            <div
-              className="mobile-pagination"
-              role="tablist"
-              aria-label="Project navigation"
-            >
+            <nav className="mobile-pagination" aria-label="Project navigation">
               {projects.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => scrollToSlide(i)}
                   className={`pagination-dot ${i === index ? "active" : ""}`}
-                  aria-label={`View ${p.title}`}
-                  aria-selected={i === index}
-                  role="tab"
+                  aria-label={`Go to project: ${p.title}`}
+                  aria-current={i === index ? "true" : undefined}
                   title={p.title}
                 />
               ))}
-            </div>
+            </nav>
           )}
         </div>
       </div>
@@ -350,4 +351,4 @@ const Slider2Cinematic = () => {
   );
 };
 
-export default Slider2Cinematic;
+export default Projects;
