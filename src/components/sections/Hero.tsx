@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
   Github,
   Linkedin,
@@ -14,7 +15,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Canvas } from "@react-three/fiber";
 import {
-  Environment,
   Grid,
   MeshDistortMaterial,
   OrbitControls,
@@ -90,31 +90,32 @@ function Hero() {
       className="px-4 pt-10 md:pt-20 pb-20 md:pb-32 max-w-6xl mx-auto"
     >
       <div className="absolute inset-0 z-[1] bg-black">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          gl={{ preserveDrawingBuffer: true, antialias: false }}
-          frameloop="always"
-        >
-          <color attach="background" args={["#000000"]} />
-          <ambientLight intensity={0.2} />
-          <pointLight position={[0, 0, 5]} intensity={1} color="#00ffff" />
-          {/* <HologramTorus />
-          <ScanLines /> */}
-          <Grid
-            position={[0, -2, 0]}
-            args={[20, 20]}
-            cellSize={0.5}
-            cellThickness={0.5}
-            cellColor="#a855f7"
-            sectionSize={2}
-            sectionThickness={1}
-            sectionColor="#6366f1"
-            fadeDistance={20}
-            fadeStrength={1}
-            infiniteGrid
-          />
-          <Environment preset="night" />
-        </Canvas>
+        <Suspense fallback={null}>
+          <Canvas
+            camera={{ position: [0, 0, 5], fov: 75 }}
+            gl={{ preserveDrawingBuffer: true, antialias: false }}
+            frameloop="always"
+          >
+            <color attach="background" args={["#000000"]} />
+            <ambientLight intensity={0.2} />
+            <pointLight position={[0, 0, 5]} intensity={1} color="#00ffff" />
+            {/* <HologramTorus />
+            <ScanLines /> */}
+            <Grid
+              position={[0, -2, 0]}
+              args={[20, 20]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#a855f7"
+              sectionSize={2}
+              sectionThickness={1}
+              sectionColor="#6366f1"
+              fadeDistance={20}
+              fadeStrength={1}
+              infiniteGrid
+            />
+          </Canvas>
+        </Suspense>
       </div>
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start justify-between">
         <div className="mt-28 text-center md:text-left">
@@ -198,18 +199,20 @@ function Hero() {
           </motion.a>
         </div>
         <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
-          <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <AnimatedSphere />
-            <OrbitControls
-              enableZoom={false}
-              autoRotate
-              autoRotateSpeed={0.3}
-              enablePan={false}
-              enableRotate={false}
-            />
-          </Canvas>
+          <Suspense fallback={null}>
+            <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <AnimatedSphere />
+              <OrbitControls
+                enableZoom={false}
+                autoRotate
+                autoRotateSpeed={0.3}
+                enablePan={false}
+                enableRotate={false}
+              />
+            </Canvas>
+          </Suspense>
 
           <div className="absolute inset-0 pointer-events-none">
             {floatingIcons.map(
