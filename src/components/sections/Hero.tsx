@@ -6,20 +6,11 @@ import {
   ChevronDown,
   Download,
   MessageSquare,
-  Code2,
-  Layers,
-  Palette,
-  Terminal,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Canvas } from "@react-three/fiber";
-import {
-  Grid,
-  MeshDistortMaterial,
-  OrbitControls,
-  Sphere,
-} from "@react-three/drei";
+import { Grid } from "@react-three/drei";
 
 function Hero() {
   const [heroRef, heroInView] = useInView({
@@ -42,45 +33,6 @@ function Hero() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const floatingIcons = [
-    {
-      Icon: Code2,
-      delay: 0,
-      x: -140,
-      y: -140,
-      color: "#818cf8",
-      mobileX: -80,
-      mobileY: -80,
-    },
-    {
-      Icon: Layers,
-      delay: 0.3,
-      x: 140,
-      y: -140,
-      color: "#818cf8",
-      mobileX: 80,
-      mobileY: -80,
-    },
-    {
-      Icon: Palette,
-      delay: 0.6,
-      x: -140,
-      y: 140,
-      color: "#818cf8",
-      mobileX: -80,
-      mobileY: 80,
-    },
-    {
-      Icon: Terminal,
-      delay: 0.9,
-      x: 140,
-      y: 140,
-      color: "#818cf8",
-      mobileX: 80,
-      mobileY: 80,
-    },
-  ];
-
   return (
     <motion.section
       ref={heroRef}
@@ -99,8 +51,6 @@ function Hero() {
             <color attach="background" args={["#000000"]} />
             <ambientLight intensity={0.2} />
             <pointLight position={[0, 0, 5]} intensity={1} color="#00ffff" />
-            {/* <HologramTorus />
-            <ScanLines /> */}
             <Grid
               position={[0, -2, 0]}
               args={[20, 20]}
@@ -198,95 +148,7 @@ function Hero() {
             <MessageSquare className="w-5 h-5" />
           </motion.a>
         </div>
-        <div className="relative h-[420px] md:h-[500px] lg:h-[600px]">
-          <Suspense fallback={null}>
-            <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 2]}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <AnimatedSphere />
-              <OrbitControls
-                enableZoom={false}
-                autoRotate
-                autoRotateSpeed={0.3}
-                enablePan={false}
-                enableRotate={false}
-              />
-            </Canvas>
-          </Suspense>
-
-          <div className="absolute inset-0 pointer-events-none">
-            {floatingIcons.map(
-              ({ Icon, delay, x, y, color, mobileX, mobileY }, index) => (
-                <motion.div
-                  key={index}
-                  className="absolute top-1/2 left-1/2 bg-gray-900/90 backdrop-blur-md p-2 md:p-3 lg:p-4 rounded-xl md:rounded-2xl border border-gray-700/50 shadow-2xl"
-                  style={{
-                    boxShadow: `0 0 20px ${color}30, 0 0 40px ${color}15`,
-                  }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotate: [0, 360],
-                    x: [
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileX
-                        : x,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileX + 2
-                        : x + 3,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileX - 2
-                        : x - 3,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileX
-                        : x,
-                    ],
-                    y: [
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileY
-                        : y,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileY - 2
-                        : y - 3,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileY + 2
-                        : y + 3,
-                      typeof window !== "undefined" && window.innerWidth < 1024
-                        ? mobileY
-                        : y,
-                    ],
-                  }}
-                  transition={{
-                    opacity: { delay: delay + 0.8, duration: 0.5 },
-                    scale: { delay: delay + 0.8, duration: 0.5 },
-                    x: {
-                      delay: delay + 1.3,
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-                    y: {
-                      delay: delay + 1.3,
-                      duration: 7,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-                    rotate: {
-                      delay: delay + 2,
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: "linear",
-                    },
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
-                </motion.div>
-              ),
-            )}
-          </div>
-        </div>
+        {/* <div className="relative h-[420px] md:h-[500px] lg:h-[600px]"></div> */}
       </div>
       <div className="flex justify-center mt-16">
         <motion.a
@@ -310,82 +172,3 @@ function Hero() {
   );
 }
 export default Hero;
-
-const AnimatedSphere = () => {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const isTablet =
-    typeof window !== "undefined" &&
-    window.innerWidth >= 768 &&
-    window.innerWidth < 1024;
-  const scale = isMobile ? 2.2 : isTablet ? 2.4 : 2.5;
-
-  return (
-    <Sphere args={[1, 64, 128]} scale={scale}>
-      <MeshDistortMaterial
-        color="#6366f1"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0.2}
-      />
-    </Sphere>
-  );
-};
-
-// function HologramTorus() {
-//   const torusRef = useRef<THREE.Mesh>(null);
-
-//   useFrame((state) => {
-//     if (torusRef.current) {
-//       torusRef.current.rotation.x = state.clock.elapsedTime * 0.3;
-//       torusRef.current.rotation.y = state.clock.elapsedTime * 0.5;
-//     }
-//   });
-
-//   return (
-//     <group>
-//       <mesh ref={torusRef}>
-//         <torusGeometry args={[1.5, 0.5, 32, 100]} />
-//         <MeshTransmissionMaterial
-//           backside
-//           samples={16}
-//           resolution={512}
-//           transmission={1}
-//           roughness={0}
-//           thickness={1}
-//           ior={1.5}
-//           chromaticAberration={1}
-//           anisotropy={1}
-//           color="#00ffff"
-//           emissive="#00ffff"
-//           emissiveIntensity={0.2}
-//         />
-//       </mesh>
-
-//       {/* Orbital rings */}
-//       {[...Array(3)].map((_, i) => (
-//         <mesh key={i} rotation={[Math.PI / 2, 0, (i * Math.PI) / 3]}>
-//           <torusGeometry args={[2 + i * 0.5, 0.02, 16, 100]} />
-//           <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
-//         </mesh>
-//       ))}
-//     </group>
-//   );
-// }
-
-// function ScanLines() {
-//   const ref = useRef<THREE.Mesh>(null);
-
-//   useFrame((state) => {
-//     if (ref.current) {
-//       ref.current.position.y = (state.clock.elapsedTime % 2) * 5 - 2.5;
-//     }
-//   });
-
-//   return (
-//     <mesh ref={ref}>
-//       <planeGeometry args={[20, 0.1]} />
-//       <meshBasicMaterial color="#00ffff" transparent opacity={0.3} />
-//     </mesh>
-//   );
-// }
