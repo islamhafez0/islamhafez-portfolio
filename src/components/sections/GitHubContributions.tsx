@@ -13,12 +13,7 @@ import {
 } from "react-icons/tb";
 import Stats from "../../types";
 const GITHUB_USERNAME = "islamhafez0";
-const TARGET_URL = `https://github-contributions.vercel.app/api/v1/${GITHUB_USERNAME}`;
-const PROXY_URLS = [
-  `https://corsproxy.io/?${encodeURIComponent(TARGET_URL)}`,
-  `https://api.allorigins.win/raw?url=${encodeURIComponent(TARGET_URL)}`,
-  `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(TARGET_URL)}`,
-];
+const API_URL = `/api/github-contributions/${GITHUB_USERNAME}`;
 
 interface ContributionData {
   years: Array<{
@@ -62,12 +57,12 @@ function calculateTotal(years: ContributionData["years"]): number {
 }
 
 function calculateLongestStreak(
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): number {
   if (!contributions || contributions.length === 0) return 0;
 
   const sorted = [...contributions].sort((a, b) =>
-    a.date.localeCompare(b.date)
+    a.date.localeCompare(b.date),
   );
 
   let longestStreak = 0;
@@ -94,7 +89,7 @@ function calculateLongestStreak(
 }
 
 function calculateCurrentStreak(
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): number {
   if (!contributions || contributions.length === 0) return 0;
 
@@ -132,7 +127,7 @@ function calculateCurrentStreak(
 }
 
 function findBestDay(
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): Stats["bestDay"] {
   if (!contributions || contributions.length === 0) {
     return { intensity: 0, date: "N/A" };
@@ -146,7 +141,7 @@ function findBestDay(
       }
       return max;
     },
-    { intensity: 0, date: "" }
+    { intensity: 0, date: "" },
   );
 
   return {
@@ -157,7 +152,7 @@ function findBestDay(
 
 function calculateDailyAverage(
   years: ContributionData["years"],
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): string {
   if (!contributions || contributions.length === 0) return "0.0";
   if (!years || years.length === 0) return "0.0";
@@ -170,7 +165,7 @@ function calculateDailyAverage(
 }
 
 function findBusiestDayOfWeek(
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): string {
   if (!contributions || contributions.length === 0) return "N/A";
 
@@ -198,7 +193,7 @@ function findBusiestDayOfWeek(
 }
 
 function findBusiestMonth(
-  contributions: ContributionData["contributions"]
+  contributions: ContributionData["contributions"],
 ): string {
   if (!contributions || contributions.length === 0) return "N/A";
 
@@ -231,7 +226,7 @@ function findBusiestMonth(
 }
 
 function calculateYearOverYear(
-  years: ContributionData["years"]
+  years: ContributionData["years"],
 ): string | null {
   if (!years || years.length < 2) return null;
 
@@ -320,24 +315,26 @@ const GitHubContributions = () => {
   const stats = useMemo(() => calculateStats(data), [data]);
 
   useEffect(() => {
-    const fetchWithFallback = async () => {
-      for (const url of PROXY_URLS) {
-        try {
-          const res = await fetch(url);
-          if (!res.ok) continue;
-          const responseData: ContributionData = await res.json();
-          if (!responseData?.contributions || !Array.isArray(responseData.contributions)) continue;
-          setData(responseData);
-          setLoading(false);
-          return;
-        } catch {
-          continue;
+    fetch(API_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((responseData: ContributionData) => {
+        if (
+          !responseData?.contributions ||
+          !Array.isArray(responseData.contributions)
+        ) {
+          throw new Error("Invalid response format");
         }
-      }
-      setError("Failed to load contribution data");
-      setLoading(false);
-    };
-    fetchWithFallback();
+        setData(responseData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch contributions:", err);
+        setError("Failed to load contribution data");
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
