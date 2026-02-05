@@ -133,6 +133,7 @@ const Projects = () => {
       className="relative w-full bg-black py-28"
       aria-roledescription="carousel"
       aria-label={`Project showcase with ${projects.length} projects`}
+      id="projects"
     >
       {/* Screen reader announcement */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">

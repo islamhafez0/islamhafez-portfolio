@@ -1,174 +1,205 @@
-import { Suspense } from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ChevronDown,
-  Download,
-  MessageSquare,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Canvas } from "@react-three/fiber";
-import { Grid } from "@react-three/drei";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
-function Hero() {
-  const [heroRef, heroInView] = useInView({
-    triggerOnce: true,
+const Hero = () => {
+  const [ref, inView] = useInView({
     threshold: 0.1,
+    triggerOnce: true,
   });
 
-  const container = {
+  // Mouse Parallax & Tilt Logic
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 30, stiffness: 150 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  // Parallax for corner flashes & light trails
+  const offset1X = useTransform(smoothMouseX, [-500, 500], [40, -40]);
+  const offset1Y = useTransform(smoothMouseY, [-500, 500], [40, -40]);
+
+  const offset2X = useTransform(smoothMouseX, [-500, 500], [-30, 30]);
+  const offset2Y = useTransform(smoothMouseY, [-500, 500], [-30, 30]);
+
+  // Subtle 3D Tilt for the main content
+  const tiltX = useTransform(smoothMouseY, [-500, 500], [4, -4]);
+  const tiltY = useTransform(smoothMouseX, [-500, 500], [-4, 4]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = clientX - innerWidth / 2;
+    const y = clientY - innerHeight / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+
+    // Set CSS variables for the spotlight mask
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = clientX - rect.left;
+    const py = clientY - rect.top;
+    (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${px}px`);
+    (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${py}px`);
+  };
+
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
     },
   };
 
-  const child = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   return (
-    <motion.section
-      ref={heroRef}
-      initial="hidden"
-      animate={heroInView ? "visible" : "hidden"}
-      variants={container}
-      className="px-4 pt-10 md:pt-20 pb-20 md:pb-32 max-w-6xl mx-auto"
+    <section
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020202] selection:bg-white selection:text-black font-outfit px-6 pt-20"
+      id="home"
     >
-      <div className="absolute inset-0 z-[1] bg-black">
-        <Suspense fallback={null}>
-          <Canvas
-            camera={{ position: [0, 0, 5], fov: 75 }}
-            gl={{ preserveDrawingBuffer: true, antialias: false }}
-            frameloop="always"
-          >
-            <color attach="background" args={["#000000"]} />
-            <ambientLight intensity={0.2} />
-            <pointLight position={[0, 0, 5]} intensity={1} color="#00ffff" />
-            <Grid
-              position={[0, -2, 0]}
-              args={[20, 20]}
-              cellSize={0.5}
-              cellThickness={0.5}
-              cellColor="#a855f7"
-              sectionSize={2}
-              sectionThickness={1}
-              sectionColor="#6366f1"
-              fadeDistance={20}
-              fadeStrength={1}
-              infiniteGrid
-            />
-          </Canvas>
-        </Suspense>
-      </div>
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start justify-between">
-        <div className="mt-28 text-center md:text-left">
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold bg-gradient-text"
-            variants={child}
-          >
-            Islam Hafez
-          </motion.h1>
-          <motion.p
-            className="text-2xl md:text-3xl mt-6 text-gray-300 max-w-2xl"
-            variants={{
-              hidden: { opacity: 0, x: -20 },
-              visible: { opacity: 1, x: 0, transition: { delay: 0.2 } },
-            }}
-          >
-            Front-end developer crafting beautiful, responsive, and
-            user-friendly web experiences.
-          </motion.p>
-          <motion.div
-            className="flex justify-center md:justify-start gap-4 mt-8"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { delay: 0.4 } },
-            }}
-          >
-            <motion.a
-              href="https://github.com/islamhafez0"
-              rel="noopener noreferrer"
-              aria-label="Github profile"
-              title="Islam Hafez's github"
-              target="_blank"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Github className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/islam-hafez-103902246/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Islam Hafez's linkedin"
-              aria-label="Linkendin profile"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Linkedin className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="mailto:islamhafez806@gmail.com"
-              title="Send email to Islam Hafez"
-              aria-label="Send email to Islam Hafez"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Mail className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              download
-              href="/Islam_Hafez_Frontend_Developer_Resume.pdf"
-              title="Download Islam Hafez's resume"
-              aria-label="Islam Hafez's resume"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Download className="w-6 h-6" />
-            </motion.a>
-          </motion.div>
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center mt-6 w-full md:w-52 justify-center gap-4 px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
-          >
-            Get In Touch
-            <MessageSquare className="w-5 h-5" />
-          </motion.a>
-        </div>
-        {/* <div className="relative h-[420px] md:h-[500px] lg:h-[600px]"></div> */}
-      </div>
-      <div className="flex justify-center mt-16">
-        <motion.a
-          className="flex"
-          href="#about"
-          aria-label="Scroll to the about section"
-          title="Scroll to about section"
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+      {/* Spotlight Reveal Layer */}
+      <div className="absolute inset-0 z-[1] pointer-events-none spotlight-reveal transition-opacity duration-500" />
+
+      {/* Interactive Background Elements (Flashes & Trails) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Corner Flashes */}
+        <motion.div
+          style={{ x: offset1X, y: offset1Y }}
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-radial-indigo blur-[100px] opacity-60 animate-pulse-slow"
+        />
+        <motion.div
+          style={{ x: offset2X, y: offset1Y }}
+          className="absolute -top-1/4 -right-1/4 w-full h-full bg-radial-purple blur-[100px] opacity-60 animate-pulse-slow"
+        />
+
+        {/* Fill Glow for depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-indigo/10 blur-[150px] rounded-full pointer-events-none" />
+
+        {/* Light Trails (SVG) */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-40"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
         >
-          <ChevronDown className="w-8 h-8 mx-auto text-gray-400 hover:text-white" />
-        </motion.a>
+          <motion.path
+            d="M -100 800 Q 400 700 1100 200"
+            stroke="rgb(var(--brand-indigo))"
+            strokeWidth="1.5"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={inView ? { pathLength: 1, opacity: 0.5 } : {}}
+            transition={{ duration: 3, ease: "easeInOut" }}
+            style={{ filter: "blur(6px)", x: offset1X, y: offset1Y }}
+          />
+          <motion.path
+            d="M -100 900 Q 500 850 1100 400"
+            stroke="rgb(var(--brand-purple))"
+            strokeWidth="2"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={inView ? { pathLength: 1, opacity: 0.6 } : {}}
+            transition={{ duration: 4, ease: "easeInOut", delay: 0.5 }}
+            style={{ filter: "blur(10px)", x: offset2X, y: offset2Y }}
+          />
+        </svg>
+
       </div>
-    </motion.section>
+
+      <motion.div
+        style={{ perspective: 1000 }}
+        className="relative z-10 w-full flex flex-col items-center"
+      >
+        <motion.div
+          style={{ rotateX: tiltX, rotateY: tiltY }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="flex flex-col items-center text-center"
+        >
+          <motion.h1
+            variants={itemVariants}
+            className="text-6xl md:text-[7.5rem] font-bold text-white leading-[0.85] tracking-tight mb-8"
+          >
+            Engineering <span className="bg-gradient-text">Human</span>, <br />
+            Impact
+            <motion.div
+              className="relative inline-flex items-center justify-center mt-6 group ml-4"
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <div className="absolute -inset-4 bg-brand-indigo/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              <motion.span
+                initial={{ color: "#fff" }}
+                animate={inView ? { color: "#000" } : {}}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                className="relative z-10 px-6 py-2 italic font-light block whitespace-nowrap tracking-tight"
+              >
+                Islam Hafez.
+              </motion.span>
+              <motion.span
+                initial={{ scaleX: 0, rotate: 0 }}
+                animate={inView ? { scaleX: 1, rotate: 0 } : {}}
+                transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 bg-white rounded-2xl tag-shadow origin-center"
+              />
+            </motion.div>
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed mb-12 px-4"
+          >
+            Frontend Architect & Odoo Specialist. Crafting high-performance systems and cinematic user experiences where technical precision meets visual storytelling.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center gap-6"
+          >
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative px-12 py-6 bg-white text-black font-black rounded-2xl flex items-center gap-4 transition-all overflow-hidden shadow-2xl"
+            >
+              <span className="relative z-10 tracking-[0.1em]">BROWSE WORK</span>
+              <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+              <div className="absolute inset-0 bg-brand-indigo/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            </motion.a>
+
+            <div className="flex items-center gap-4">
+              {[
+                { icon: Github, href: "https://github.com/islamhafez0" },
+                { icon: Linkedin, href: "https://linkedin.com/in/islam-hafez-103902246/" },
+                { icon: Mail, href: "mailto:islamhafez806@gmail.com" }
+              ].map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -8, scale: 1.1, color: "#fff" }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-14 h-14 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:border-brand-indigo/50 transition-all shadow-xl"
+                >
+                  <social.icon size={22} />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </section>
   );
-}
+};
+
 export default Hero;

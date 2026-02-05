@@ -4,6 +4,12 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        brand: {
+          indigo: "rgb(var(--brand-indigo) / <alpha-value>)",
+          purple: "rgb(var(--brand-purple) / <alpha-value>)",
+        }
+      },
       animation: {
         dots: "dots 1.5s infinite",
       },

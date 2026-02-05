@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Self-hosted Roboto fonts */
+:root {
+  --brand-indigo: 99 102 241;
+  /* #6366f1 */
+  --brand-purple: 168 85 247;
+  /* #a855f7 */
+}
+
+/* Self-hosted Outfit fonts */
 @font-face {
-  font-family: "Roboto";
+  font-family: "Outfit";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/roboto-v30-latin-regular.woff2") format("woff2");
+  src: url("/fonts/outfit-v15-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Outfit";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/roboto-v30-latin-700.woff2") format("woff2");
+  src: url("/fonts/outfit-v15-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @layer base {
   html {
-    font-family: "Roboto", sans-serif;
+    font-family: "Outfit", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -33,26 +42,41 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth selection:bg-white selection:text-black;
   }
+
   body {
     @apply bg-black text-white antialiased;
   }
+
   ::-webkit-scrollbar {
     @apply h-1 w-1;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-black;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-gray-400 rounded-md;
   }
 }
+
 @layer utilities {
   .bg-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#6366f1] to-[#a855f7];
+  }
+
+  /* Spotlight Reveal Utility */
+  .spotlight-reveal {
+    background: radial-gradient(circle 500px at var(--mouse-x) var(--mouse-y), rgba(99, 102, 241, 0.1), transparent 80%);
+  }
+
+  .tag-shadow {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgb(var(--brand-indigo) / 0.1);
   }
 }
+
 .dots {
   @apply flex items-center justify-center gap-1 mt-1;
 }
@@ -72,6 +96,7 @@
 .dots span:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 .custom_bullets .swiper-pagination-bullet {
   @apply bg-gray-400;
   opacity: 0.7;
@@ -86,9 +111,11 @@
 .swiper-container.swiper-grabbing {
   cursor: grabbing;
 }
+
 .swiper-container {
   cursor: grab;
 }
+
 [data-title]:hover::after {
   content: attr(data-title);
   position: absolute;
@@ -101,6 +128,7 @@
   left: 0;
   z-index: 10;
 }
+
 .animate-transform {
   animation: trans 1s ease-in-out 0.5s infinite alternate;
   @apply transition-transform duration-200;
@@ -110,7 +138,49 @@
   0% {
     transform: translateY(-20px);
   }
+
   100% {
     transform: translateY(0);
+  }
+}
+
+/* Custom Utilities for Exploration Hero */
+.bg-radial-indigo {
+  background: radial-gradient(circle, rgb(var(--brand-indigo) / 0.4) 0%, transparent 70%);
+}
+
+.bg-radial-purple {
+  background: radial-gradient(circle, rgb(var(--brand-purple) / 0.4) 0%, transparent 70%);
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
   }
 }

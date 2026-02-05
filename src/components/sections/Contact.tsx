@@ -143,9 +143,8 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className={`flex items-center justify-between text-sm font-medium mb-2 ${
-                      formErrors.name ? "text-red-500" : ""
-                    }`}
+                    className={`flex items-center justify-between text-sm font-medium mb-2 ${formErrors.name ? "text-red-500" : ""
+                      }`}
                   >
                     Name
                     {formErrors.name && (
@@ -158,11 +157,10 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className={`w-full px-4 py-2 rounded-lg bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none ${
-                      formErrors.name
+                    className={`w-full px-4 py-2 rounded-lg bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none ${formErrors.name
                         ? "ring-2 ring-red-500 focus:ring-red-500"
                         : ""
-                    }`}
+                      }`}
                     value={formData["name"]}
                     onChange={handleChange}
                     aria-required="true"
@@ -174,9 +172,8 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className={`flex items-center justify-between text-sm font-medium mb-2 ${
-                      formErrors.email ? "text-red-500" : ""
-                    }`}
+                    className={`flex items-center justify-between text-sm font-medium mb-2 ${formErrors.email ? "text-red-500" : ""
+                      }`}
                   >
                     Email
                     {formErrors.email && (
@@ -189,11 +186,10 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className={`w-full px-4 py-2 rounded-lg bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none ${
-                      formErrors.email
+                    className={`w-full px-4 py-2 rounded-lg bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none ${formErrors.email
                         ? "ring-2 ring-red-500 focus:ring-red-500"
                         : ""
-                    }`}
+                      }`}
                     value={formData["email"]}
                     onChange={handleChange}
                     aria-required="true"
@@ -205,9 +201,8 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className={`flex items-center justify-between text-sm font-medium mb-2 ${
-                      formErrors.message ? "text-red-500" : ""
-                    }`}
+                    className={`flex items-center justify-between text-sm font-medium mb-2 ${formErrors.message ? "text-red-500" : ""
+                      }`}
                   >
                     Message
                     {formErrors.message && (
@@ -221,10 +216,9 @@ const Contact = () => {
                     name="message"
                     rows={4}
                     className={`resize-none w-full px-4 py-2 rounded-lg bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none
-                      ${
-                        formErrors.message
-                          ? "ring-2 ring-red-500 focus:ring-red-500"
-                          : ""
+                      ${formErrors.message
+                        ? "ring-2 ring-red-500 focus:ring-red-500"
+                        : ""
                       }
                       `}
                     value={formData["message"]}
