@@ -52,11 +52,11 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -75,11 +75,11 @@ const Hero = () => {
         {/* Corner Flashes */}
         <motion.div
           style={{ x: offset1X, y: offset1Y }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-radial-indigo blur-[100px] opacity-60 animate-pulse-slow"
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-radial-indigo blur-[60px] opacity-40 animate-pulse-slow will-change-[transform,opacity]"
         />
         <motion.div
           style={{ x: offset2X, y: offset1Y }}
-          className="absolute -top-1/4 -right-1/4 w-full h-full bg-radial-purple blur-[100px] opacity-60 animate-pulse-slow"
+          className="absolute -top-1/4 -right-1/4 w-full h-full bg-radial-purple blur-[60px] opacity-40 animate-pulse-slow will-change-[transform,opacity]"
         />
 
         {/* Fill Glow for depth */}
@@ -128,7 +128,7 @@ const Hero = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-6xl md:text-[7.5rem] font-bold text-white leading-[0.85] tracking-tight mb-8"
+            className="text-6xl md:text-[7.5rem] font-bold text-white leading-[0.85] tracking-tight mb-8 will-change-[transform,opacity]"
           >
             Engineering <span className="bg-gradient-text">Human</span>, <br />
             Impact

@@ -73,7 +73,7 @@
   }
 
   .tag-shadow {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgb(var(--brand-indigo) / 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgb(var(--brand-indigo) / 0.1);
   }
 }
 
@@ -146,11 +146,11 @@
 
 /* Custom Utilities for Exploration Hero */
 .bg-radial-indigo {
-  background: radial-gradient(circle, rgb(var(--brand-indigo) / 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(var(--brand-indigo) / 0.3) 0%, transparent 70%);
 }
 
 .bg-radial-purple {
-  background: radial-gradient(circle, rgb(var(--brand-purple) / 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(var(--brand-purple) / 0.3) 0%, transparent 70%);
 }
 
 .animate-pulse-slow {
