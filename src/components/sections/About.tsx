@@ -8,8 +8,7 @@ import {
   Trophy,
   ShieldCheck,
   Sparkles,
-  Calendar,
-  FolderGit2,
+  Brain,
   Layers,
   Building2,
   Layout,
@@ -35,105 +34,45 @@ interface Achievement {
   icon: IconType;
 }
 
-// interface Highlight {
-//   title: string;
-//   period: string;
-//   description: string;
-//   icon: IconType;
-// }
-
 const skills: Skill[] = [
-  {
-    name: "React.js",
-    level: 95,
-    icon: Code2,
-    hint: "Hooks, Context, Performance",
-  },
-  {
-    name: "TypeScript",
-    level: 90,
-    icon: Gauge,
-    hint: "Type-safe, Scalable Code",
-  },
-  { name: "Next.js", level: 88, icon: Rocket, hint: "SSR, SSG, App Router" },
-  {
-    name: "Tailwind CSS",
-    level: 94,
-    icon: Layout,
-    hint: "Responsive, Utility-first",
-  },
-  { name: "Odoo & OWL", level: 85, icon: Server, hint: "ERP, Custom Modules" },
-  { name: "Node.js", level: 80, icon: Database, hint: "Express, REST APIs" },
-  {
-    name: "UI Engineering",
-    level: 94,
-    icon: Gauge,
-    hint: "shadcn/ui, a11y, theming",
-  },
-  {
-    name: "Cloud & DevOps",
-    level: 78,
-    icon: Cloud,
-    hint: "Vercel, AWS, CI/CD",
-  },
-  {
-    name: "Performance",
-    level: 90,
-    icon: Cpu,
-    hint: "LCP, CLS, TBT, RUM, performance budgets",
-  },
+  { name: "Odoo & OWL", level: 85, icon: Server, hint: "ERP modules, workflows, OWL theming" },
+  { name: "React.js", level: 95, icon: Code2, hint: "Production apps, state management" },
+  { name: "TypeScript", level: 90, icon: Gauge, hint: "Type-safe, scalable apps" },
+  { name: "Next.js", level: 88, icon: Rocket, hint: "SSR/SSG, app router, performance" },
+  { name: "AI / RAG", level: 80, icon: Brain, hint: "RAG assistants with custom data" },
+  { name: "Tailwind CSS", level: 94, icon: Layout, hint: "Responsive, utility-first design" },
+  { name: "Node.js", level: 80, icon: Database, hint: "APIs, backend services, Express" },
+  { name: "Cloud & DevOps", level: 78, icon: Cloud, hint: "Vercel, AWS, CI/CD pipelines" },
+  { name: "Performance", level: 90, icon: Cpu, hint: "Optimized speed & UX metrics" },
 ];
 
 const achievements: Achievement[] = [
   {
-    label: "Years Experience",
-    value: "2+",
-    desc: "Professional development",
-    icon: Calendar,
-  },
-  {
-    label: "Projects Delivered",
+    label: "Production Apps",
     value: "15+",
-    desc: "Web apps & enterprise solutions",
-    icon: FolderGit2,
+    desc: "User-facing and ERP systems",
+    icon: Server,
   },
   {
-    label: "Technologies",
-    value: "25+",
-    desc: "Frontend & backend stack",
-    icon: Layers,
-  },
-  {
-    label: "Companies",
-    value: "3",
-    desc: "Including enterprise clients",
+    label: "ERP Systems",
+    value: "Odoo",
+    desc: "Customization and data workflows",
     icon: Building2,
   },
+  {
+    label: "AI Projects",
+    value: "RAG",
+    desc: "Assistants grounded in company data",
+    icon: Brain,
+  },
+  {
+    label: "Infrastructure",
+    value: "End-to-end",
+    desc: "From frontend UI to backend services",
+    icon: Layers,
+  }
 ];
 
-// const highlights: Highlight[] = [
-//   {
-//     title: "Odoo Frontend Developer",
-//     period: "Oct 2024 — Present",
-//     description:
-//       "Building full-stack web solutions using Odoo ERP, developing custom modules with Python, and creating pixel-perfect themes with OWL (Odoo Web Library) for dynamic, server-rendered applications.",
-//     icon: Wrench,
-//   },
-//   {
-//     title: "Frontend Angular Developer",
-//     period: "Jun — Sep 2024",
-//     description:
-//       "Delivered large-scale Angular 17 features across two enterprise fintech platforms, including wallets, top-ups, and SMS-based payments with OTP verification, integrating 60+ RESTful APIs with NgRx-managed state.",
-//     icon: Rocket,
-//   },
-//   {
-//     title: "Frontend React Developer Intern",
-//     period: "Apr — Aug 2024",
-//     description:
-//       "Developed responsive web applications using React.js, collaborated with UI/UX designers on component development, and focused on performance optimization and accessibility best practices.",
-//     icon: GitBranch,
-//   },
-// ];
 
 const About = () => {
   const shouldReduce = useReducedMotion();
@@ -185,12 +124,7 @@ const About = () => {
                 Professional Story
               </h3>
               <p className="text-base leading-relaxed text-gray-300">
-                I'm a Frontend Developer and Odoo Developer passionate about
-                building dynamic, responsive web applications that deliver
-                exceptional user experiences. With expertise in React.js,{" "}
-                TypeScript, and Next.js, I combine strong technical fundamentals
-                with a results-oriented approach to create high-quality user
-                interfaces that improve UX and drive user engagement.
+                I build web apps and ERP systems that people actually use. I work mostly with React, TypeScript, and Next.js, and I also customize Odoo modules for business workflows. I’ve shipped production apps, worked on AI assistants, and always focus on making interfaces fast, clean, and reliable.
               </p>
 
               <ul className="mt-4 sm:mt-6 grid gap-3 text-sm text-gray-400">
@@ -200,8 +134,7 @@ const About = () => {
                     aria-hidden="true"
                   />
                   <span>
-                    Delivering pixel-perfect, responsive designs with modern CSS
-                    frameworks and UI libraries.
+                    Building responsive interfaces with modern CSS and UI libraries.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -210,8 +143,7 @@ const About = () => {
                     aria-hidden="true"
                   />
                   <span>
-                    Writing clean, maintainable code with TypeScript for
-                    type-safe, scalable applications.
+                    Writing maintainable, type-safe code in TypeScript.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -220,8 +152,7 @@ const About = () => {
                     aria-hidden="true"
                   />
                   <span>
-                    Optimizing performance with lazy loading, code splitting,
-                    and efficient state management.
+                    Keeping apps fast with lazy loading, code splitting, and smart state management.
                   </span>
                 </li>
               </ul>
@@ -270,8 +201,6 @@ const About = () => {
         {/* Skills Grid */}
         <SkillsGrid skills={skills} />
 
-        {/* Experience Highlights */}
-        {/* <HighlightsList highlights={highlights} /> */}
       </div>
     </section>
   );
@@ -397,60 +326,6 @@ function SkillCard({ skill }: { skill: Skill }) {
   );
 }
 
-// function HighlightsList({ highlights }: { highlights: Highlight[] }) {
-//   const shouldReduce = useReducedMotion();
-//   return (
-//     <div className="w-full">
-//       <div className="mb-4 sm:mb-6">
-//         <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
-//           Experience Highlights
-//         </h3>
-//       </div>
-//       <div className="space-y-4">
-//         {highlights.map((h, i) => {
-//           const Icon = h.icon;
-//           return (
-//             <motion.div
-//               key={h.title + i}
-//               initial={shouldReduce ? undefined : { opacity: 0, y: 10 }}
-//               whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
-//               viewport={{ once: true, margin: "-20% 0px" }}
-//               transition={{
-//                 delay: shouldReduce ? 0 : i * 0.04,
-//                 duration: 0.45,
-//                 ease: [0.22, 1, 0.36, 1],
-//               }}
-//               className="grid gap-4 rounded-xl border border-gray-700/50 bg-gray-800/50 backdrop-blur-sm p-4 sm:p-5 sm:grid-cols-[auto_1fr_auto] hover:border-indigo-500/50 transition-colors"
-//               role="article"
-//               aria-labelledby={`highlight-${i}-title`}
-//             >
-//               <div className="flex items-center">
-//                 <div className="grid w-10 h-10 place-items-center rounded-lg bg-gray-800/80 border border-gray-700/50 text-indigo-400">
-//                   <Icon className="w-5 h-5" aria-hidden="true" />
-//                 </div>
-//               </div>
-//               <div>
-//                 <div
-//                   id={`highlight-${i}-title`}
-//                   className="font-medium text-white"
-//                 >
-//                   {h.title}
-//                 </div>
-//                 <div className="mt-1 text-sm text-gray-300 leading-relaxed">
-//                   {h.description}
-//                 </div>
-//               </div>
-//               <div className="flex items-start justify-end sm:justify-start">
-//                 <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300 text-xs border border-gray-700/50">
-//                   {h.period}
-//                 </span>
-//               </div>
-//             </motion.div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// }
+
 
 export default About;
