@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
 import { Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { experiences } from "../../utils/constants";
-import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 
 export default function Experience() {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
 
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
 
@@ -25,9 +20,10 @@ export default function Experience() {
   return (
     <div className="px-4 py-20 bg-gray-900/50 backdrop-blur-sm" id="experience">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView && { opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
         <h2 className="text-4xl font-bold text-white mb-4">Experience</h2>
@@ -37,12 +33,11 @@ export default function Experience() {
       <div className="max-w-4xl mx-auto">
         {experiences.map((exp, index) => (
           <motion.div
-            ref={ref}
             key={index}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            animate={inView && { opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
             className="mb-12 relative pl-8"
           >
             <div className="absolute left-0 top-0">
