@@ -39,8 +39,8 @@ const Hero = () => {
     const rect = e.currentTarget.getBoundingClientRect();
     const px = clientX - rect.left;
     const py = clientY - rect.top;
-    (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', `${px}px`);
-    (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', `${py}px`);
+    (e.currentTarget as HTMLElement).style.setProperty("--mouse-x", `${px}px`);
+    (e.currentTarget as HTMLElement).style.setProperty("--mouse-y", `${py}px`);
   };
 
   const containerVariants = {
@@ -112,7 +112,6 @@ const Hero = () => {
             style={{ filter: "blur(10px)", x: offset2X, y: offset2Y }}
           />
         </svg>
-
       </div>
 
       <motion.div
@@ -148,7 +147,11 @@ const Hero = () => {
               <motion.span
                 initial={{ scaleX: 0, rotate: 0 }}
                 animate={inView ? { scaleX: 1, rotate: 0 } : {}}
-                transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  delay: 1,
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className="absolute inset-0 bg-white rounded-2xl tag-shadow origin-center"
               />
             </motion.div>
@@ -158,7 +161,9 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed mb-12 px-4"
           >
-            Frontend Architect & Odoo Specialist. Crafting high-performance systems and cinematic user experiences where technical precision meets visual storytelling.
+            Frontend Architect & Odoo Specialist. Crafting high-performance
+            systems and cinematic user experiences where technical precision
+            meets visual storytelling.
           </motion.p>
 
           <motion.div
@@ -171,16 +176,30 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="group relative px-12 py-6 bg-white text-black font-black rounded-2xl flex items-center gap-4 transition-all overflow-hidden shadow-2xl"
             >
-              <span className="relative z-10 tracking-[0.1em]">BROWSE WORK</span>
+              <span className="relative z-10 tracking-[0.1em]">
+                BROWSE WORK
+              </span>
               <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
               <div className="absolute inset-0 bg-brand-indigo/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </motion.a>
 
             <div className="flex items-center gap-4">
               {[
-                { icon: Github, href: "https://github.com/islamhafez0" },
-                { icon: Linkedin, href: "https://linkedin.com/in/islam-hafez-103902246/" },
-                { icon: Mail, href: "mailto:islamhafez806@gmail.com" }
+                {
+                  icon: Github,
+                  href: "https://github.com/islamhafez0",
+                  desc: "GitHub",
+                },
+                {
+                  icon: Linkedin,
+                  href: "https://linkedin.com/in/islam-hafez-103902246/",
+                  desc: "LinkedIn",
+                },
+                {
+                  icon: Mail,
+                  href: "mailto:islamhafez806@gmail.com",
+                  desc: "Email",
+                },
               ].map((social, i) => (
                 <motion.a
                   key={i}
@@ -190,6 +209,7 @@ const Hero = () => {
                   whileHover={{ y: -8, scale: 1.1, color: "#fff" }}
                   whileTap={{ scale: 0.9 }}
                   className="w-14 h-14 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:border-brand-indigo/50 transition-all shadow-xl"
+                  aria-label={social.desc}
                 >
                   <social.icon size={22} />
                 </motion.a>
