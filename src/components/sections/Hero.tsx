@@ -64,7 +64,7 @@ const Hero = () => {
     <section
       ref={ref}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020202] selection:bg-white selection:text-black font-outfit px-6 pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020202] selection:bg-white selection:text-black font-outfit px-4 pt-20"
       id="home"
     >
       {/* Spotlight Reveal Layer */}
@@ -127,9 +127,10 @@ const Hero = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-6xl md:text-[7.5rem] font-bold text-white leading-[0.85] tracking-tight mb-8 will-change-[transform,opacity]"
+            className="text-5xl md:text-[7.5rem] font-bold text-white md:leading-[0.85] tracking-tight mb-8 will-change-[transform,opacity]"
           >
-            Engineering <span className="bg-gradient-text">Human</span>, <br />
+            Engineering <span className="bg-gradient-text">Human</span>,{" "}
+            <br className="hidden md:block" />
             Impact
             <motion.div
               className="relative inline-flex items-center justify-center mt-6 group ml-4"

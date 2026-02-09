@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
-import { ArrowUpRight, Github, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Github, ChevronDown, Expand } from "lucide-react";
 import "./projects.css";
 import { projects } from "../../utils/constants";
 import { useReducedMotion, useMediaQuery } from "../../utils/hooks";
+import ImageModal from "../ui/ImageModal";
 
 // Configuration constants
 const MIN_SWIPE_DISTANCE = 50; // Minimum swipe distance in pixels
@@ -14,6 +15,7 @@ const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [showScrollHint, setShowScrollHint] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const touchRef = useRef<{ start: number | null; end: number | null }>({
     start: null,
     end: null,
@@ -190,7 +192,7 @@ const Projects = () => {
           <AnimatePresence mode="popLayout">
             <motion.div
               key={`bg-${index}`}
-              className="cinematic-bg"
+              className="cinematic-bg cursor-pointer group"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -198,9 +200,36 @@ const Projects = () => {
                 duration: prefersReducedMotion ? 0.1 : 0.3,
                 ease: "easeOut",
               }}
+              onClick={() => setIsModalOpen(true)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setIsModalOpen(true);
+                }
+              }}
+              aria-label={`View full size image of ${current.title}`}
             >
-              <img src={current.image} alt={current.title} />
-              <div className="cinematic-overlay" />
+              <img
+                src={current.image}
+                alt={current.title}
+                className="transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="cinematic-overlay group-hover:opacity-90 transition-opacity duration-300" />
+
+              {/* Hover hint */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+              >
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+                  <p className="text-white text-sm font-medium">
+                    Click to view full image
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
 
@@ -241,7 +270,7 @@ const Projects = () => {
                 </motion.h2>
 
                 <motion.p
-                  className="text-xl text-white/70 max-w-2xl mb-8 leading-relaxed font-light"
+                  className="text-base md:text-xl text-white/70 max-w-2xl mb-8 leading-relaxed font-light"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -296,6 +325,16 @@ const Projects = () => {
                       </a>
                     )}
 
+                    {/* Expand Image Button */}
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="group flex items-center justify-center w-14 h-14 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white hover:border-white hover:scale-110"
+                      aria-label="View full image"
+                      title="View full image"
+                    >
+                      <Expand className="w-5 h-5 text-white transition-colors duration-300 group-hover:text-black" />
+                    </button>
+
                     {current.github && (
                       <a
                         href={current.github}
@@ -348,6 +387,14 @@ const Projects = () => {
           )}
         </div>
       </div>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        imageSrc={current.image}
+        imageAlt={current.title}
+      />
     </section>
   );
 };
