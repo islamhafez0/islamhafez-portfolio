@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail, MapPin, Clock } from "lucide-react";
+import QRCode from "react-qr-code";
 
 type SocialPlatform = "github" | "linkedin" | "twitter" | "mail";
 
@@ -39,6 +40,7 @@ const CONTACT = {
   email: "islamhafez806@gmail.com",
   location: "Egypt",
   availability: "Available for opportunities",
+  phone: "+20 10 9742 3297",
 };
 
 const iconMap: Record<SocialPlatform, typeof Github> = {
@@ -57,7 +59,7 @@ const Footer = () => {
       aria-label="Site footer"
     >
       <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -171,6 +173,32 @@ const Footer = () => {
                 </span>
               </li>
             </ul>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            aria-label="Connect via QR"
+            className="flex flex-col gap-4"
+          >
+            <div className="bg-white p-3 rounded-xl md:w-fit group hover:scale-105 transition-transform duration-300">
+              <QRCode
+                value={`BEGIN:VCARD
+VERSION:3.0
+FN:${BRAND.name}
+TITLE:${BRAND.tagline}
+EMAIL:${CONTACT.email}
+TEL:${CONTACT.phone}
+URL:${window.location.origin}
+END:VCARD`}
+                size={130}
+                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                viewBox={`0 0 256 256`}
+              />
+            </div>
+            <p className="text-xs text-gray-500">Scan to save contact info</p>
           </motion.section>
         </div>
 
