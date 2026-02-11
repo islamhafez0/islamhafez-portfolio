@@ -160,7 +160,7 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed mb-12 px-4"
+            className="text-lg md:text-xl text-gray-400 max-w-xl font-light leading-relaxed mb-12 md:px-4"
           >
             Frontend Architect & Odoo Specialist. Crafting high-performance
             systems and cinematic user experiences where technical precision
