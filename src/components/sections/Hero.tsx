@@ -193,7 +193,7 @@ const Hero = () => {
                 },
                 {
                   icon: Linkedin,
-                  href: "https://linkedin.com/in/islam-hafez-103902246/",
+                  href: "https://www.linkedin.com/in/islam-hafez",
                   desc: "LinkedIn",
                 },
                 {

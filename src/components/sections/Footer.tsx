@@ -30,9 +30,8 @@ const NAV_LINKS: NavLink[] = [
 ];
 
 const SOCIAL_LINKS: SocialLink[] = [
+  { platform: "linkedin", href: "https://www.linkedin.com/in/islam-hafez" },
   { platform: "github", href: "https://github.com/islamhafez0" },
-  { platform: "linkedin", href: "https://linkedin.com/in/islamhafez0" },
-  { platform: "twitter", href: "https://x.com/islamhafez07" },
   { platform: "mail", href: "mailto:islamhafez806@gmail.com" },
 ];
 
