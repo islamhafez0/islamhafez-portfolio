@@ -104,8 +104,8 @@
   justify-content: center;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: all 0.3s ease;
 }
 
@@ -306,8 +306,8 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.05em;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   transition: all 0.3s ease;
 }
 

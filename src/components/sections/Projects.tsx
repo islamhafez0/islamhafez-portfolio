@@ -48,18 +48,22 @@ const Projects = () => {
 
   // Smooth scroll progress mapping to index
   useEffect(() => {
+    let lastIndex = -1;
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      setShowScrollHint(false); // Hide hint after first scroll
+      if (showScrollHint) setShowScrollHint(false);
 
-      // Calculate index based on scroll position
       const newIndex = Math.min(
         Math.floor(latest * projects.length),
         projects.length - 1,
       );
-      setIndex((prev) => (newIndex !== prev ? newIndex : prev));
+
+      if (newIndex !== lastIndex) {
+        lastIndex = newIndex;
+        setIndex(newIndex);
+      }
     });
     return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, [scrollYProgress, showScrollHint]);
 
   // Handle manual navigation (clicking dots/buttons)
   const scrollToSlide = useCallback(

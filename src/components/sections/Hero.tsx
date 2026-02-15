@@ -75,15 +75,15 @@ const Hero = () => {
         {/* Corner Flashes */}
         <motion.div
           style={{ x: offset1X, y: offset1Y }}
-          className="absolute -top-1/4 -left-1/4 w-full h-full bg-radial-indigo blur-[60px] opacity-40 animate-pulse-slow will-change-[transform,opacity]"
+          className="absolute -top-1/4 -left-1/4 w-full h-full bg-radial-indigo blur-[60px] opacity-40 animate-pulse-slow will-change-transform"
         />
         <motion.div
           style={{ x: offset2X, y: offset1Y }}
-          className="absolute -top-1/4 -right-1/4 w-full h-full bg-radial-purple blur-[60px] opacity-40 animate-pulse-slow will-change-[transform,opacity]"
+          className="absolute -top-1/4 -right-1/4 w-full h-full bg-radial-purple blur-[60px] opacity-40 animate-pulse-slow will-change-transform"
         />
 
         {/* Fill Glow for depth */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-indigo/10 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-indigo/10 blur-[80px] rounded-full pointer-events-none will-change-transform" />
 
         {/* Light Trails (SVG) */}
         <svg
@@ -99,7 +99,7 @@ const Hero = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={inView ? { pathLength: 1, opacity: 0.5 } : {}}
             transition={{ duration: 3, ease: "easeInOut" }}
-            style={{ filter: "blur(6px)", x: offset1X, y: offset1Y }}
+            style={{ filter: "blur(4px)", x: offset1X, y: offset1Y }}
           />
           <motion.path
             d="M -100 900 Q 500 850 1100 400"
@@ -109,7 +109,7 @@ const Hero = () => {
             initial={{ pathLength: 0, opacity: 0 }}
             animate={inView ? { pathLength: 1, opacity: 0.6 } : {}}
             transition={{ duration: 4, ease: "easeInOut", delay: 0.5 }}
-            style={{ filter: "blur(10px)", x: offset2X, y: offset2Y }}
+            style={{ filter: "blur(6px)", x: offset2X, y: offset2Y }}
           />
         </svg>
       </div>
@@ -127,7 +127,7 @@ const Hero = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-[7.5rem] font-bold text-white md:leading-[0.85] tracking-tight mb-8 will-change-[transform,opacity]"
+            className="text-5xl md:text-[7.5rem] font-bold text-white md:leading-[0.85] tracking-tight mb-8 will-change-transform"
           >
             Engineering <span className="bg-gradient-text">Human</span>,{" "}
             <br className="hidden md:block" />
