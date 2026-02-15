@@ -132,30 +132,53 @@ const Hero = () => {
             Engineering <span className="bg-gradient-text">Human</span>,{" "}
             <br className="hidden md:block" />
             Impact
-            <motion.div
-              className="relative inline-flex items-center justify-center mt-6 group ml-4"
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            <motion.a
+              href="https://www.linkedin.com/in/islam-hafez"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-flex items-center justify-center mt-6 group ml-4 cursor-pointer"
+              whileHover="hover"
+              initial="initial"
             >
-              <div className="absolute -inset-4 bg-brand-indigo/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              <motion.div
+                className="absolute -inset-4 bg-brand-indigo/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                variants={{
+                  hover: { scale: 1.2, opacity: 1 },
+                }}
+              />
               <motion.span
-                initial={{ color: "#fff" }}
-                animate={inView ? { color: "#000" } : {}}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="relative z-10 px-6 py-2 italic font-light block whitespace-nowrap tracking-tight"
+                variants={{
+                  initial: { color: "#fff" },
+                  visible: { color: "#000", transition: { delay: 1.2, duration: 0.6 } },
+                  hover: { scale: 1.05 },
+                }}
+                animate={inView ? "visible" : "initial"}
+                className="relative z-10 px-6 py-2 italic font-light block whitespace-nowrap tracking-tight flex items-center gap-2"
               >
                 Islam Hafez.
+                <motion.span
+                  className="overflow-hidden whitespace-nowrap text-[0.6rem] font-bold tracking-[0.2em] uppercase text-brand-indigo inline-block w-0"
+                  variants={{
+                    hover: { width: "auto", marginLeft: 8, opacity: 1, transition: { duration: 0.3 } },
+                  }}
+                >
+                  Connect
+                </motion.span>
               </motion.span>
               <motion.span
-                initial={{ scaleX: 0, rotate: 0 }}
-                animate={inView ? { scaleX: 1, rotate: 0 } : {}}
-                transition={{
-                  delay: 1,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
+                variants={{
+                  initial: { scaleX: 0, rotate: 0 },
+                  visible: {
+                    scaleX: 1,
+                    rotate: 0,
+                    transition: { delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                  },
+                  hover: { scale: 1.1, rotate: -2, transition: { type: "spring", stiffness: 400, damping: 10 } },
                 }}
+                animate={inView ? "visible" : "initial"}
                 className="absolute inset-0 bg-white rounded-2xl tag-shadow origin-center"
               />
-            </motion.div>
+            </motion.a>
           </motion.h1>
 
           <motion.p
